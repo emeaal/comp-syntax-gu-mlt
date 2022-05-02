@@ -90,7 +90,7 @@
 4	bokstavligen	_	ADV	_	_	3	advmod	_	_
 5	över	_	ADP	_	_	7	case	_	_
 6	hela	_	ADJ	_	_	7	amod	_	_
-7	världen	_	NOUN	_	_	8	obl	_	_
+7	världen	_	NOUN	_	_	3	obl	_	_
 8	sa	_	VERB	_	_	3	_	_	_
 9	Leive	_	PROPN	_	_	9	nsubj	_	_
 10	.	_	PUNCT	_	_	3	punct	_	_
@@ -148,8 +148,8 @@
 10	att	_	PART	_	_	11	mark	_	_
 11	lägga	_	VERB	_	_	8	advcl	_	_
 13	sina	_	PRON	_	_	13	nmod:pass	_	_
-14	i	_	ADP	_	_	16	case	_	_
-15	pengar	_	NOUN	_	_	11	obj	_	_
+14	pengar	_	NOUN	_	_	11	obj	_	_
+15	i	_	ADP	_	_	16	case	_	_
 16	fonderna	_	NOUN	_	_	11	obl	_	_
 17	.	_	PUNCT	_	_	4	punct	_	_
 
@@ -199,7 +199,7 @@
 1	Han	_	PRON	_	_	2	nsubj	_	_
 2	samlade	_	VERB	_	_	0	root	_	_
 3	kort	_	NOUN	_	_	2	obj	_	_
-4	och	_	CCONJ	_	_	2	cc	_	_
+4	och	_	CCONJ	_	_	5	cc	_	_
 5	bytte	_	VERB	_	_	2	conj	_	_
 6	dem	_	PRON	_	_	5	obj	_	_
 7	med	_	ADP	_	_	9	case	_	_
@@ -288,7 +288,7 @@
 6	denna	_	DET	_	_	7	det	_	_
 7	flicka	_	NOUN	_	_	9	nsubj	_	_
 8	skulle	_	AUX	_	_	9	aux	_	_
-9	våga	_	VERB	_	_	2	advcl	_	_
+9	våga	_	VERB	_	_	3	acl	_	_
 10	göra	_	VERB	_	_	9	xcomp	_	_
 11	henne	_	PRON	_	_	10	obj	_	_
 12	till	_	ADP	_	_	13	case	_	_
@@ -331,7 +331,7 @@
 6	atropin	_	NOUN	_	_	4	obj	_	_
 7	och	_	CCONJ	_	_	8	cc	_	_
 8	autoinjektorer	_	NOUN	_	_	6	conj	_	_
-9	i	_	ADP	_	_	12	case	_	_
+9	i	_	ADP	_	_	11	case	_	_
 10	sina	_	PRON	_	_	11	nmod:poss	_	_
 11	förbandslådor	_	NOUN	_	_	4	obl	_	_
 12	för	_	ADP	_	_	15	mark	_	_
