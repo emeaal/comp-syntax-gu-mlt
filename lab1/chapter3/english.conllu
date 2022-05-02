@@ -1,45 +1,47 @@
-# sentid = 1
-# text = Who are they ?
-1	Vilka	_	PRON	_	_	0	root	_	_
-2	är	_	AUX	_	_	1	cop	_	_
-3	de	_	PRON	_	_	1	nsubj	_	_
+# sent_id = 1
+# text = Who are they?
+1	Who	_	PRON	_	_	0	root	_	_
+2	are	_	AUX	_	_	1	cop	_	_
+3	they	_	PRON	_	_	1	nsubj	_	_
 4	?	_	PUNCT	_	_	1	punct	_	_
 
-# sentid = 2
-# text = A small town with two minarets glides by .
-1	En	_	DET	_	_	3	det	_	_
-2	liten	_	ADJ	_	_	3	amod	_	_
-3	stad	_	NOUN	_	_	7	nsubj	_	_
-4	med	_	ADP	_	_	6	case	_	_
-5	två	_	NUM	_	_	6	nmod	_	_
-6	minareter	_	NOUN	_	_	3	nmod	_	_
-7	glider	_	VERB	_	_	0	root	_	_
-8	förbi	_	ADP	_	_	7	advmod	_	_
+# sent_id = 2
+# text = A small town with two minarets glides by.
+1	A	_	DET	_	_	3	det	_	_
+2	small	_	ADJ	_	_	3	amod	_	_
+3	town	_	NOUN	_	_	7	nsubj	_	_
+4	with	_	ADP	_	_	6	case	_	_
+5	two	_	NUM	_	_	6	nummod	_	_
+6	minarets	_	NOUN	_	_	3	nmod	_	_
+7	glides	_	NOUN	_	_	0	root	_	_
+8	by	_	ADV	_	_	7	advmod	_	_
 9	.	_	PUNCT	_	_	7	punct	_	_
 
-# sentid = 3
-# text = I was just a boy with muddy shoes .
-1	Jag	_	PRON	_	_	5	nsubj	_	_
-2	var	_	AUX	_	_	5	cop	_	_
-3	bara	_	ADV	_	_	5	advmod	_	_
-4	en	_	DET	_	_	5	det	_	_
-5	pojke	_	NOUN	_	_	0	root	_	_
-6	med	_	ADP	_	_	8	case	_	_
-7	leriga	_	ADJ	_	_	8	amod	_	_
-8	skor	_	NOUN	_	_	5	nmod	_	_
+# sent_id = 3
+# text = I was just a boy with muddy shoes.
+1	I	_	PRON	_	_	5	nsubj	_	_
+2	was	_	AUX	_	_	5	cop	_	_
+3	just	_	ADV	_	_	5	advmod	_	_
+4	a	_	DET	_	_	5	det	_	_
+5	boy	_	NOUN	_	_	0	root	_	_
+6	with	_	ADP	_	_	8	case	_	_
+7	muddy	_	ADJ	_	_	8	amod	_	_
+8	shoes	_	NOUN	_	_	5	nmod	_	_
 9	.	_	PUNCT	_	_	5	punct	_	_
 
-# sentid = 4
+# sent_id = 4
 # text = Shenzhen 's traffic police have opted for unconventional penalties before .
-1	Shenzhen	_	PROPN	_	_	2	nmod:poss	_
-2   's  _   PART    _   _   1   case    _   _
-3	trafikpolis	_	NOUN	_	_	4	nsubj	_	_
-4	har	_	AUX	_	_	4	aux	_	_
-5	valt	_	VERB	_	_	0	root	_	_
-6	okonventionella	_	ADJ	_	_	6	amod	_	_
-7	straff	_	NOUN	_	_	4	obj	_	_
-8	förut	_	ADV	_	_	4	advmod	_	_
-9	.	_	PUNCT	_	_	4	punct	_	_
+1	Shenzhen	_	PROPN	_	_	4	nmod:poss	_	_
+2	's	_	PART	_	_	1	case	_	_
+3	traffic	_	NOUN	_	_	4	compound	_	_
+4	police	_	NOUN	_	_	6	nsubj	_	_
+5	have	_	AUX	_	_	6	aux	_	_
+6	opted	_	VERB	_	_	0	root	_	_
+7	for	_	ADP	_	_	9	case	_	_
+8	unconventional	_	ADJ	_	_	9	amod	_	_
+9	penalties	_	NOUN	_	_	6	obl	_	_
+10	before	_	ADV	_	_	6	advmod	_	_
+11	.	_	PUNCT	_	_	6	punct	_	_
 
 # sentid = 5
 # text = The study of volcanoes is called volcanology , sometimes spelled vulcanology.
@@ -189,12 +191,12 @@
 7	five	_	NUM	_	_	8	nummod	_	_
 8	years	_	NOUN	_	_	5	nmod	_	_
 9	in	_	ADP	_	_	10	case	_	_
-10	prison	_	NOUN	_	_	5	nmod	_	_
+10	prison	_	NOUN	_	_	8	nmod	_	_
 
 # sentid = 15
 # text = the news was carried to every village in the province
 1	The	_	DET	_	_	2	det	_	_
-2	news	_	NOUN	_	_	3	nsubj:pass	_	_
+2	news	_	NOUN	_	_	4	nsubj:pass	_	_
 3	was	_	AUX	_	_	4	aux	_	_
 4	carried	_	VERB	_	_	0	root	_	_
 5	to	_	ADP	_	_	7	case	_	_
@@ -231,18 +233,18 @@
 9	life	_	NOUN	_	_	5	obl	_	_
 10	eternal	_	ADJ	_	_	9	amod	_	_
 
-# sentid = 18
+# sent_id = 18
 # text = the casings had rotted away and had to be replaced
 1	the	_	DET	_	_	2	det	_	_
 2	casings	_	NOUN	_	_	4	nsubj	_	_
 3	had	_	AUX	_	_	4	aux	_	_
 4	rotted	_	VERB	_	_	0	root	_	_
 5	away	_	ADV	_	_	4	advmod	_	_
-6	and	_	CCONJ	_	_	7	cc	_	_
-7	had	_	AUX	_	_	4	conj	_	_
+6	and	_	CCONJ	_	_	10	cc	_	_
+7	had	_	AUX	_	_	0	aux	_	_
 8	to	_	PART	_	_	10	mark	_	_
-9	be	_	aux	_	_	10	aux:pass	_	_
-10	replaced	_	VERB	_	_	7	xcomp	_	_
+9	be	_	AUX	_	_	10	aux:pass	_	_
+10	replaced	_	VERB	_	_	4	conj	_	_
 
 # sentid = 19
 # text = she was incensed that this chit of a girl should dare to make a fool of her in front of the class
@@ -302,7 +304,7 @@
 3	troops	_	NOUN	_	_	5	nsubj	_	_
 4	now	_	ADV	_	_	5	advmod	_	_
 5	carry	_	VERB	_	_	0	root	_	_
-6	atropine	_	NOUN	_	_	3	obj	_	_
+6	atropine	_	NOUN	_	_	5	obj	_	_
 7	and	_	CCONJ	_	_	8	cc	_	_
 8	autoinjectors	_	NOUN	_	_	6	conj	_	_
 9	in	_	ADP	_	_	14	case	_	_
