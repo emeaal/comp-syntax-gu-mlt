@@ -12,4 +12,5 @@ abstract Food = {
         Wine, Cheese, Fish, Lasagne, Pasta, Oysters, Hamburger : Kind ;
         Very : Quality -> Quality ;
         Fresh, Warm, Italian, Expensive, Delicious, Boring, Tasty, Swedish, Hot : Quality ;
+        And: Quality -> Quality
     }
