@@ -18,4 +18,15 @@ concrete FoodEng of Food = {
         Expensive = {s = "expensive"} ;
         Delicious = {s = "delicious"} ;
         Boring = {s = "boring"} ;
+        
+        Lasagne = {s = "lasagne"} ;
+        Pasta = {s = "pasta"} ;
+        Oysters = {s = "oysters"} ;
+        Hamburger = {s = "hamburger"} ;
+        
+
+        Tasty = {s = "tasty"} ;
+        Hot = {s = "hot"} ;
+        Swedish = {s = "Swedish"} ;
+
     }
