@@ -23,10 +23,19 @@ concrete FoodEng of Food = {
         Pasta = {s = "pasta"} ;
         Oysters = {s = "oysters"} ;
         Hamburger = {s = "hamburger"} ;
+        Tacos = {s = "tacos" } ;
+        Chicken = {s = "chicken" } ;
+        Salad = {s = "salad" } ;
+        Sushi = {s = "sushi" } ;
+        Soup = {s = "soup" } ;
+        Stew = {s = "stew" } ;
         
-
         Tasty = {s = "tasty"} ;
         Hot = {s = "hot"} ;
         Swedish = {s = "Swedish"} ;
-
+        Cheap = {s = "cheap" } ;
+        Bitter = {s = "bitter" } ;
+        Salty = {s = "salty" } ;
+        Spicy = {s = "spicy" };
+        Bland = {s = "bland"} ;
     }
