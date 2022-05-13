@@ -3,6 +3,8 @@ resource MicroResSwe = open Prelude in {
 param
   Number = Sg | Pl ;
   Case = Nom | Acc ;
+  Gender = Utr | Neutr ;
+  Spec = Indef | Def ;
 
 
   Agreement = Agr Number ; ---s Person to be added
@@ -17,13 +19,17 @@ oper
     s = table {Sg => sg ; Pl => pl}
     } ;
 
-  regNoun : Str -> Noun = \sg -> mkNoun sg (sg + "s") ;
+  regNoun : Str -> Noun = \sg -> mkNoun sg (sg + "ar") ;
+
 
   -- smart paradigm
   smartNoun : Str -> Noun = \sg -> case sg of {
-    _ + ("ay"|"ey"|"oy"|"uy") => regNoun sg ;
-    x + "y"                   => mkNoun sg (x + "ies") ;
-    _ + ("ch"|"sh"|"s"|"o")   => mkNoun sg (sg + "es") ;
+    _ + ("r"|"ln"|"oy"|"uy") => regNoun sg ;
+    flick + "a"               => mkNoun sg (flick + "or") ;
+    tank + ("ing"|"dom"|"er"|"en") => mkNoun sg (tank + "ar") ;
+    cyk + "el"              => mkNoun sg (cyk + "lar") ;
+    annons + ("het"|"or")   => mkNoun sg (annons + "er") ;
+    _ + ("a"|"e"|"u"|"i"|"o"|"ö"|"ä"|"å")   => mkNoun sg (sg + "n") ;
     _                         => regNoun sg
     } ;
 
