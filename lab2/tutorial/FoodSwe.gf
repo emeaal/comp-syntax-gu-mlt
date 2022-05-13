@@ -2,9 +2,11 @@ concrete FoodSwe of Food = {
   
       lincat
         Phrase, Item, Kind, Quality = {s : Str} ;
+        Kind = {s : Number => Str} ;
   
       lin
         Is item quality = {s = item.s ++ "är" ++ quality.s} ;
+        Is item qual = {s = item.s ++ copula item.n ++ qual.s} ;
         This kind = {s = "denna" ++ kind.s} ;
         That kind = {s = "den" ++ kind.s} ;
         QKind quality kind = {s = quality.s ++ kind.s} ;
@@ -16,7 +18,7 @@ concrete FoodSwe of Food = {
         Warm = {s = "varm"} ;
         Italian = {s = "italiensk"} ;
         Expensive = {s = "dyr"} ;
-        Delicious = {s = "god"} ;
+        Delicious = {s = variants {"god" ; "goda" ; "smakfull" ; "smakfulla"}} ;
         Boring = {s = "tråkig"} ;
         
         Lasagne = {s = "lasagne"} ;
