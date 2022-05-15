@@ -92,94 +92,104 @@ concrete MicroLangSwe of MicroLang = open MicroResSwe, Prelude in {
 
 ---------------- Lexicon part -----------------------
 
-lin already_Adv = mkAdv "redan" ;
+---Nouns---
+
 lin animal_N = mkN "djur" ;
 lin apple_N = mkN "äpple" ;
 lin baby_N = mkN "bebis" ;
-lin bad_A = mkA "dålig" ;
 lin beer_N = mkN "öl" "öl" ;
-lin big_A = mkA "stor" ;
 lin bike_N = mkN "cykel" ;
 lin bird_N = mkN "fågel";
-lin black_A = mkA "svart" ;
 lin blood_N = mkN "blod" ;
-lin blue_A = mkA "blå" ;
 lin boat_N = mkN "båt" ;
 lin book_N = mkN "bok" ;
 lin boy_N = mkN "pojke" ;
 lin bread_N = mkN "bröd" ;
-lin break_V2 = mkV2 (mkV "bryta" "bröt" "brutit") ;
-lin buy_V2 = mkV2 (mkV "köpa" "köpt" "köpte") ;
 lin car_N = mkN "bil" ;
 lin cat_N = mkN "katt" ;
 lin child_N = mkN "barn" "barn" ;
 lin city_N = mkN "stad" ;
-lin clean_A = mkA "ren" ;
-lin clever_A = mkA "smart" ;
 lin cloud_N = mkN "moln" ;
-lin cold_A = mkA "kall" ;
-lin come_V = mkV "komma" "kom" "kommit" ;
 lin computer_N = mkN "dator" ;
 lin cow_N = mkN "ko" ;
-lin dirty_A = mkA "smutsig" ;
 lin dog_N = mkN "hund" ;
-lin drink_V2 = mkV2 (mkV "dricka" "drack" "druckit") ;
-lin eat_V2 = mkV2 (mkV "äta" "åt" "ätit") ;
-lin find_V2 = mkV2 (mkV "hitta" "hittde" "hittat") ;
 lin fire_N = mkN "eld" ;
 lin fish_N = mkN "fisk" ;
 lin flower_N = mkN "blomma" ;
 lin friend_N = mkN "vän" ;
 lin girl_N = mkN "flicka" ;
-lin good_A = mkA "bra" ;
-lin go_V = mkV "gå" "gick" "gick" ;
 lin grammar_N = mkN "grammatik" ;
-lin green_A = mkA "grön" ;
-lin heavy_A = mkA "tung" ;
 lin horse_N = mkN "häst" ;
-lin hot_A = mkA "het" ;
 lin house_N = mkN "hus" ;
 -- lin john_PN = mkPN "John" ;
-lin jump_V = mkV "hoppa" ;
-lin kill_V2 = mkV2 "döda" ;
 -- lin know_VS = mkVS (mkV "know" "knew" "known") ;
 lin language_N = mkN "språk" ;
-lin live_V = mkV "leva" ;
-lin love_V2 = mkV2 (mkV "älska") ;
 lin man_N = mkN "man" ;
 lin milk_N = mkN "mjölk" ;
 lin music_N = mkN "musik" ;
-lin new_A = mkA "ny" ;
-lin now_Adv = mkAdv "nu" ;
-lin old_A = mkA "gammal" ;
 -- lin paris_PN = mkPN "Paris" ;
-lin play_V = mkV "leka" ;
-lin read_V2 = mkV2 (mkV "läsa" "läste" "läst") ;
+lin river_N = mkN "flod" ;
+lin sea_N = mkN "sjö" ;
+lin ship_N = mkN "skepp" ;
+lin star_N = mkN "stjärna" ;
+lin train_N = mkN "tåg" ;
+lin tree_N = mkN "träd" ;
+lin water_N = mkN "vatten" ;
+lin wine_N = mkN "vin" ;
+lin woman_N = mkN "kvinna" "kvinnor" ;
+
+---Adjectives---
+
+lin bad_A = mkA "dålig" ;
+lin big_A = mkA "stor" ;
+lin black_A = mkA "svart" ;
+lin blue_A = mkA "blå" ;
+lin clean_A = mkA "ren" ;
+lin clever_A = mkA "smart" ;
+lin cold_A = mkA "kall" ;
+lin dirty_A = mkA "smutsig" ;
+lin good_A = mkA "bra" ;
+lin green_A = mkA "grön" ;
+lin heavy_A = mkA "tung" ;
+lin hot_A = mkA "het" ;
+lin new_A = mkA "ny" ;
+lin old_A = mkA "gammal" ;
 lin ready_A = mkA "redo" ;
 lin red_A = mkA "röd" ;
-lin river_N = mkN "flod" ;
-lin run_V = mkV "springa" "sprang" "sprungit" ;
-lin sea_N = mkN "sjö" ;
-lin see_V2 = mkV2 (mkV "se" "såg" "såg") ;
-lin ship_N = mkN "skepp" ;
-lin sleep_V = mkV "sova" "sov" "sovit" ;
 lin small_A = mkA "liten" ;
-lin star_N = mkN "stjärna" ;
+lin warm_A = mkA "varm" ;
+lin white_A = mkA "vit" ;
+lin yellow_A = mkA "gul" ;
+lin young_A = mkA "ung" ;
+
+---Verbs---
+lin come_V = mkV "komma" "kom" "kommit" ;
+lin break_V2 = mkV2 (mkV "bryta" "bröt" "brutit") ;
+lin buy_V2 = mkV2 (mkV "köpa" "köpt" "köpte") ;
+lin drink_V2 = mkV2 (mkV "dricka" "drack" "druckit") ;
+lin eat_V2 = mkV2 (mkV "äta" "åt" "ätit") ;
+lin find_V2 = mkV2 (mkV "hitta" "hittde" "hittat") ;
+lin go_V = mkV "gå" "gick" "gick" ;
+lin jump_V = mkV "hoppa" ;
+lin kill_V2 = mkV2 "döda" ;
+lin live_V = mkV "leva" ;
+lin love_V2 = mkV2 (mkV "älska") ;
+lin play_V = mkV "leka" ;
+lin read_V2 = mkV2 (mkV "läsa" "läste" "läst") ;
+lin run_V = mkV "springa" "sprang" "sprungit" ;
+lin see_V2 = mkV2 (mkV "se" "såg" "såg") ;
+lin sleep_V = mkV "sova" "sov" "sovit" ;
 lin swim_V = mkV "simma" "simmade" "simmat" ;
 lin teach_V2 = mkV2 (mkV "lära" "lärde" "lärt") ;
-lin train_N = mkN "tåg" ;
 lin travel_V = mkV "resa" ;
-lin tree_N = mkN "träd" ;
 lin understand_V2 = mkV2 (mkV "förstå" "förstod" "förstått") ;
 lin wait_V2 = mkV2 "vänta" "for" ;
 lin walk_V = mkV "gå" ;
-lin warm_A = mkA "varm" ;
-lin water_N = mkN "vatten" ;
-lin white_A = mkA "vit" ;
-lin wine_N = mkN "vin" ;
-lin woman_N = mkN "kvinna" "kvinnor" ;
-lin yellow_A = mkA "gul" ;
-lin young_A = mkA "ung" ;
+
+---Adverbs---
+
+lin already_Adv = mkAdv "redan" ;
+lin now_Adv = mkAdv "nu" ;
 
 ---------------------------
 -- Paradigms part ---------
