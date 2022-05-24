@@ -8,17 +8,20 @@ param
   Degree = Positive | Comparative | Superlative ;
   Voice = Active | Passive ;
 
+  VForm = Inf | Pres | Pret | Sup;
+
 
 oper
   Noun : Type = { s : Number => Species => Case => Str ;  
                   g : Gender ;
   } ;
 
-  mkNoun1 : Str -> Gender -> Noun
+  mkNoun1 : Str -> Gender -> Noun --takes one string+gender from lexicon
     = \sg_indef,gender -> case gender of {
     Neut => case sg_indef of {
-      v + "in" => mkNounGen sg_indef (v + "ner") sg_indef (v + "ner") gender ;
-      x + "en" => mkNounGen sg_indef (x + "net") sg_indef (x + "nen") gender ;
+      vatt + "en" => mkNounGen sg_indef (vatt + "net") sg_indef (vatt + "nen") gender ;
+      x + "n" => mkNounGen sg_indef (x + "net") sg_indef (x + "nen") gender ;
+      v + "in" => mkNounGen sg_indef (v + "net") sg_indef (v + "ner") gender ;
       a + "le" => mkNounGen sg_indef (sg_indef + "t") sg_indef (sg_indef + "nen") gender ;
       _        => mkNounGen sg_indef (sg_indef + "et") sg_indef (sg_indef + "en") gender 
     } ;
@@ -33,13 +36,14 @@ oper
     }
   } ;
 
-  mkNoun2 : Str -> Str -> Gender -> Noun 
+  mkNoun2 : Str -> Str -> Gender -> Noun --takes two strings+gender either from lexicon or from mknoun1 above
     = \ sg_indef, pl_indef, gender -> case gender of {
       Neut => case sg_indef of {
         x + "le" => mkNounGen sg_indef (sg_indef + "t") pl_indef (sg_indef + "na") gender ;
         _ => mkNounGen sg_indef (sg_indef + "et") pl_indef (pl_indef + "na") gender
       } ;
       Utr => case sg_indef of {
+        x + "or" => mkNounGen sg_indef (sg_indef + "n") pl_indef (pl_indef + "na") gender ;
         x + ("r"|"a") => mkNounGen sg_indef (x + "an") pl_indef (x + "orna") gender ;
         pojk + "e" => mkNounGen sg_indef(pojk + "en") pl_indef (pl_indef + "na") gender ;
         _ + "o" => mkNounGen sg_indef (sg_indef + "n") pl_indef (pl_indef + "na") gender ;
@@ -49,12 +53,15 @@ oper
       }
     } ;
 
-    mkNounGen : Str -> Str -> Str -> Str -> Gender -> Noun
+    mkNounGen : Str -> Str -> Str -> Str -> Gender -> Noun --4 strings, make genitive form from tables
     = \ sg_indef, sg_def, pl_indef, pl_def, gender -> {
       s = table {
         Sing => table {
           Indef => table {
-            Geni => sg_indef + "s" ;
+            Geni => case sg_indef of {
+              _ + "s" => sg_indef ; --add similar for all forms, ending with S
+              _ => sg_indef + "s" 
+            } ;
             _ => sg_indef
           } ;
           Def => table {
@@ -77,6 +84,44 @@ oper
     } ;
 
 
+---verbs----
+
+Verb : Type = {s : VForm => Str} ;
+
+Verb2 : Type = Verb ** {c : Str} ;
+
+  mkVerb : (inf,pres,pret,Sup : Str) -> Verb
+    = \inf,pres,pret,Sup -> {
+    s = table {
+      Inf => inf ;
+      Pres => pres ;
+      Pret => pret ;
+      Sup => Sup 
+      }
+    } ;
+
+  regVerb : (inf : Str) -> Verb = \inf ->
+    mkVerb inf (inf + "r") (inf + "de") (inf + "t") ;
+
+
+  -- regular verbs with predictable variations
+  smartVerb : Str -> Verb = \inf -> case inf of {
+    x + "a" => case x of {
+      _ + ("s"|"öp"|"ek") => mkVerb inf (x + "er") (x + "te") (x + "t") ;
+      _ + ("m"|"t"|"pp"|"d"|"k") => mkVerb inf (inf + "r") (inf + "de") (inf + "t") ;
+      _ + "v"           => mkVerb inf (x + "er") (x + "de") (x + "t") ;
+      _ + "r"           => mkVerb inf (x) (x + "de") (x + "t") ;
+      _                 => mkVerb inf (x + "t") (x + "er") (x + "s")
+    } ;
+    le + "va" => mkVerb inf (le + "ver") (le + "vde") (le + "vt") ;
+     _ => regVerb inf
+     } ;
+
+  -- normal irregular verbs e.g. drink,drank,drunk
+  irregVerb : (inf,pret,Sup : Str) -> Verb =
+    \inf,pret,Sup ->
+      let verb = smartVerb inf
+      in mkVerb inf (verb.s ! Pres) pret Sup ;    
 
 
   ---adjectives---
