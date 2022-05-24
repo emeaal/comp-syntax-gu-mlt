@@ -46,13 +46,13 @@ lin dog_N = mkN "hund" Utr ;
 lin fire_N = mkN "eld" Utr ;
 lin fish_N = mkN "fisk" Utr ;
 lin flower_N = mkN "blomma" Utr ;
-lin friend_N = mkN "vän" Utr ; --check
+lin friend_N = mkN "vän" "vännen" "vänner" "vännerna" Utr ; --check
 lin girl_N = mkN "flicka" Utr ;
 lin grammar_N = mkN "grammatik" Utr ; ---uncountable, check for mass noun
 lin horse_N = mkN "häst" Utr ;
-lin house_N = mkN "hus" Neut ; --uncountable
+lin house_N = mkN "hus" Neut ; --uncountable, check S ending
 lin language_N = mkN "språk" Neut ;
-lin man_N = mkN "man" "män" Utr ; -- check
+lin man_N = mkN "man" "mannen" "män" "männen" Utr ; -- check
 lin milk_N = mkN "mjölk" "mjölk" Utr; -- uncountable
 lin music_N = mkN "musik" Utr ; -- uncountable
 lin river_N = mkN "flod" Utr ;
@@ -61,7 +61,7 @@ lin ship_N = mkN "skepp" Neut ; -- uncountable
 lin star_N = mkN "stjärna" Utr ;
 lin train_N = mkN "tåg" Neut ; -- uncountable
 lin tree_N = mkN "träd" Neut ; --uncountable
-lin water_N = mkN "vatten" "vatten" Neut ;
+lin water_N = mkN "vatten" Neut ;
 lin wine_N = mkN "vin" "viner" Neut ;
 lin woman_N = mkN "kvinna" Utr ;
 
@@ -73,10 +73,13 @@ oper
   mkN = overload {
     mkN : Str -> Gender -> Noun
       = \sg_indef,gender 
-        -> lin N (mkNounPlur sg_indef gender) ;
+        -> lin N (mkNoun1 sg_indef gender) ;
     mkN : Str -> Str -> Gender -> Noun
-      = \sg_indef,pl_indef,gender 
-        -> lin N (mkNounGen sg_indef pl_indef gender) ;
+      = \sg_indef, pl_indef, gender 
+        -> lin N (mkNoun2 sg_indef pl_indef gender) ;
+    mkN : Str -> Str -> Str -> Str -> Gender -> Noun
+      = \sg_indef, sg_def, pl_indef, pl_def, gender 
+        -> lin N (mkNounGen sg_indef sg_def pl_indef pl_def gender) ;
   } ;
 
 }
