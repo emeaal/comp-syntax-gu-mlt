@@ -8,17 +8,23 @@ lincat
   S = {s : Str} ;
   NP = {s : Case => Str ; n : Number ; g : Gender} ;
   VP = {verb : Verb ; compl : Str} ;
+  AP = Adjective ;
 
   N = Noun ;
+
   V = Verb ;
   V2 = Verb2 ;
+
+  A = Adjective ;
 
 
 lin
 -- Phrase
   UttS s = s ;
-  --UttNP np = {s = np.s ! Acc} ; -- english
   UttNP np = {s = np.s ! Nom } ; -- ! Acc
+
+
+-- Verb 
 
   UseV v = {
       verb = v ;
@@ -26,9 +32,11 @@ lin
       } ;
 
 
+
+
 ---------------- Lexicon part -----------------------
 -----------------------------------------------------
--- Nouns
+---Nouns---
 lin animal_N = mkN "djur" Neut ;
 lin apple_N = mkN "äpple" "äpplen" Neut ;
 lin baby_N = mkN "bebis" Utr ;
@@ -70,7 +78,29 @@ lin water_N = mkN "vatten" Neut ;
 lin wine_N = mkN "vin" Neut ;
 lin woman_N = mkN "kvinna" Utr ;
 
----adjectives---
+---Adjectives---
+lin bad_A = mkA "dålig" ; -- sämre sämst xx
+lin big_A = mkA "stor" ; -- större störst xx
+lin black_A = mkA "svart" ; -- svartare svartast
+lin clean_A = mkA "ren" ; -- renare renast
+lin clever_A = mkA "smart" ; --smartare smarast
+lin cold_A = mkA "kall" ; --kallare kallast
+lin dirty_A = mkA "smutsig" ; --smutsigare smutsigast 
+lin good_A = mkA "bra" ; --bättre bäst xx
+lin green_A = mkA "grön" ; --grönare grönast
+lin heavy_A = mkA "tung" ; -- tyngre tyngst xx
+lin hot_A = mkA "het" ; --hetare hetast
+lin new_A = mkA "ny" ; --nyare nyast
+lin old_A = mkA "gammal" ; -- äldre äldst xx
+lin ready_A = mkA "redo" ; --redo ??
+lin red_A = mkA "röd" ; --rödare rödast
+lin small_A = mkA "liten" ; --mindre minst xx
+lin warm_A = mkA "varm" ; --varmare varmast
+lin white_A = mkA "vit" ; --vitare vitast
+lin yellow_A = mkA "gul" ; --gulare gulast
+lin young_A = mkA "ung" ; --yngre yngst xx
+lin blue_A = mkA "blå" ; --blåare blåast
+
 
 ---Verbs---
 lin come_V = mkV "komma" "kom" "kommit" ;
@@ -89,7 +119,7 @@ lin read_V2 = mkV2 (mkV "läsa" "läste" "läst") ;
 lin run_V = mkV "springa" "sprang" "sprungit" ;
 lin see_V2 = mkV2 (mkV "se" "såg" "sett") ;
 lin sleep_V = mkV "sova" "sov" "sovit" ;
-lin swim_V = mkV "simma" "simmade" "simmat" ;
+lin swim_V = mkV "simma" "simmade" "simmat" ; --check
 lin teach_V2 = mkV2 (mkV "lära" "lärde" "lärt") ;
 lin travel_V = mkV "resa" ;
 lin understand_V2 = mkV2 (mkV "förstå" "förstod" "förstått") ;
@@ -121,6 +151,19 @@ oper
   mkV2 = overload {
     mkV2 : Verb -> Verb2 
       = \verb -> lin V2 (verb ** {c = []}) ;
+    --mKv2 : Verb -> Str -> Verb2 
+      --= \verb,comp -> lin V2 (verb ** {c = comp}) 
   } ;
+
+  mkA = overload {
+    mkA : Str -> Adjective
+      = \pos_utr
+        -> lin A (mkAdjective1 pos_utr) ;
+  } ;
+  
+  
+  --Str -> A
+    --= \s -> lin A {s = s} ;
+
 
 }
