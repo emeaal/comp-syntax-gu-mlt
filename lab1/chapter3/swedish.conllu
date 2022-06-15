@@ -79,10 +79,6 @@
 # sent_id = 7
 # text = "Hennes röst åkte bokstavligen över hela världen" sa Leive
 # text_en = "Her voice literally went around the world ," Leive said .
-# I was a bit unsure of this one and looked it up in the Swedish treebank where it was translated to "'Hennes röst gick bokstavligt talat runt jorden', sade Leive"
-# and they mean the same thing in my opinion, just with different wordings 'jorden = the earth', and 'världen = the world'
-# However, "said" was annotated to "sade" which may be more grammatically correct, to me it feels more 'old' and formal so I decided to stick with 'sa" since it is
-# used in the same way as "sade"
 # tricky to find root
 1	Hennes	_	PRON	_	_	2	nmod:poss	_	_
 2	röst	_	NOUN	_	_	3	nsubj	_	_
@@ -280,9 +276,9 @@
 # sent_id = 19
 # text = Hon blev upprörd över att denna flicka skulle våga göra henne till åtlöje inför hela klassen.
 # text_en = She was incensed that this chit of a girl should dare to make a fool of her in front of the class
-1	Hon	_	PRON	_	_	2	nsubj	_	_
-2	blev	_	AUX	_	_	0	root	_	_
-3	upprörd	_	ADJ	_	_	2	xcomp	_	_
+1	Hon	_	PRON	_	_	3	nsubj	_	_
+2	blev	_	AUX	_	_	3	cop	_	_
+3	upprörd	_	ADJ	_	_	0	root	_	_
 4	över	_	ADP	_	_	9	mark	_	_
 5	att	_	SCONJ	_	_	9	mark	_	_
 6	denna	_	DET	_	_	7	det	_	_
