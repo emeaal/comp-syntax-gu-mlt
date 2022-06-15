@@ -91,7 +91,7 @@
 5	över	_	ADP	_	_	7	case	_	_
 6	hela	_	ADJ	_	_	7	amod	_	_
 7	världen	_	NOUN	_	_	3	obl	_	_
-8	sa	_	VERB	_	_	3	_	_	_
+8	sa	_	VERB	_	_	3	parataxis	_	_
 9	Leive	_	PROPN	_	_	9	nsubj	_	_
 10	.	_	PUNCT	_	_	3	punct	_	_
 
@@ -182,7 +182,7 @@
 4	det	_	PRON	_	_	6	expl	_	_
 5	skulle	_	AUX	_	_	6	aux	_	_
 6	ta	_	VERB	_	_	2	ccomp	_	_
-7	passagerare	_	NOUN	_	_	6	_	_	_
+7	passagerare	_	NOUN	_	_	6	iobj	_	_
 8	ungefär	_	ADV	_	_	9	advmod	_	_
 9	fyra	_	NUM	_	_	10	nummod	_	_
 10	minuter	_	NOUN	_	_	6	obj	_	_
@@ -270,12 +270,12 @@
 1	Höljena	_	NOUN	_	_	3	nsubj	_	_
 2	hade	_	AUX	_	_	3	aux	_	_
 3	ruttnat	_	VERB	_	_	0	root	_	_
-4	bort	_	ADV	_	_	3	_	_	_
+4	bort	_	ADV	_	_	3	compound:prt	_	_
 5	och	_	CCONJ	_	_	7	cc	_	_
 6	behövde	_	AUX	_	_	7	aux	_	_
 7	bytas	_	VERB	_	_	3	conj	_	_
 8	ut	_	ADP	_	_	7	compound:prt	_	_
-9	.	_	PUNCT	_	_	3	.	_	_
+9	.	_	PUNCT	_	_	3	punct	_	_
 
 # sent_id = 19
 # text = Hon blev upprörd över att denna flicka skulle våga göra henne till åtlöje inför hela klassen.
@@ -370,7 +370,8 @@
 # sent_id = 23
 # text = Det har sagts att endast ett hierakalist samhället med en fritidsklass i toppen kan producera konstverk.
 # text_en = It has been said that only a hierarchical society with a leisure class at the top can produce works of art
-1	Det	_	PRON	_	_	3	_	_	_
+# "Det" = expl?
+1	Det	_	PRON	_	_	3	expl	_	_
 2	har	_	AUX	_	_	3	aux	_	_
 3	sagts	_	VERB	_	_	0	root	_	_
 4	att	_	SCONJ	_	_	15	mark	_	_
