@@ -289,7 +289,7 @@
 14	victory	_	NOUN	_	_	11	nmod	_	_
 15	based	_	VERB	_	_	14	acl	_	_
 16	on	_	ADP	_	_	19	case	_	_
-17	just	_	ADV	_	_	18	adv	_	_
+17	just	_	ADV	_	_	18	advmod	_	_
 18	43	_	NUM	_	_	19	nummod	_	_
 19	%	_	SYM	_	_	15	obl	_	_
 20	of	_	ADP	_	_	23	case	_	_
