@@ -265,7 +265,7 @@
 
 # sentid = 19
 # text = she was incensed that this chit of a girl should dare to make a fool of her in front of the class
-# 18-20 fixed MWE? not sure how to that, couldn't find that many examples to follow in the ud file
+# 18-20 fixed MWE? 
 1	she	_	PRON	_	_	3	nsubj	_	_
 2	was	_	VERB	_	_	3	cop	_	_
 3	incensed	_	ADJ	_	_	0	root	_	_
