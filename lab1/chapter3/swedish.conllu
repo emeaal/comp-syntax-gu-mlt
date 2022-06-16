@@ -21,7 +21,7 @@
 
 # sent_id = 3
 # text = Jag var bara en pojke med leriga skor.
-# text = I was just a boy with muddy shoes .
+# text_en = I was just a boy with muddy shoes .
 1	Jag	_	PRON	_	_	5	nsubj	_	_
 2	var	_	AUX	_	_	5	cop	_	_
 3	bara	_	ADV	_	_	5	advmod	_	_
@@ -296,7 +296,7 @@
 
 # sent_id = 20
 # text = Jordskredet han hade i elektorskollegiet döljde snävheten i en seger baserat på bara 43% av folkvalet.
-# text = The landslide he had in the electoral college obscured the narrowness of a victory based on just 43% of the popular vote
+# text_en = The landslide he had in the electoral college obscured the narrowness of a victory based on just 43% of the popular vote
 1	Jordskredet	_	NOUN	_	_	6	nsubj	_	_
 2	han	_	PRON	_	_	3	nsubj	_	_
 3	hade	_	VERB	_	_	1	acl:relcl	_	_
