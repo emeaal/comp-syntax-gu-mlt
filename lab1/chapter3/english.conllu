@@ -43,7 +43,7 @@
 10	before	_	ADV	_	_	6	advmod	_	_
 11	.	_	PUNCT	_	_	6	punct	_	_
 
-# sentid = 5
+# sent_id = 5
 # text = The study of volcanoes is called volcanology , sometimes spelled vulcanology.
 1	The	_	DET	_	_	2	det	_	_
 2	study	_	NOUN	_	_	6	nsubj:pass	_	_
@@ -58,7 +58,7 @@
 11	vulcanology	_	NOUN	_	_	10	xcomp	_	_
 12	.	_	PUNCT	_	_	6	punct	_	_
 
-# sentid = 6
+# sent_id = 6
 # text = It was conducted just off the Mexican coast from April to June.
 1	It	_	PRON	_	_	3	nsubj:pass	_	_
 2	was	_	AUX	_	_	3	aux:pass	_	_
@@ -74,7 +74,7 @@
 12	June	_	PROPN	_	_	10	nmod	_	_
 13	.	_	PUNCT	_	_	3	punct	_	_
 
-# sentid = 7
+# sent_id = 7
 # text = "Her voice literally went around the world," Leive said.
 # root = went? or said? how to work with quotes?
 1	"	_	PUNCT	_	_	5	punct	_	_
@@ -91,7 +91,7 @@
 13	said	_	VERB	_	_	5	parataxis	_	_
 14	.	_	PUNCT	_	_	5	punct	_	_
 
-# sentid = 8
+# sent_id = 8
 # text = A witness told police that the victim had attacked the suspect in April.
 1	A	_	DET	_	_	2	det	_	_
 2	witness	_	NOUN	_	_	3	nsubj	_	_
@@ -125,7 +125,7 @@
 13	rare	_	ADJ	_	_	4	advcl	_	_
 14	.	_	PUNCT	_	_	4	punct	_	_
 
-# sentid = 10
+# sent_id = 10
 # text = This has not stopped investors flocking to put their money in the funds .
 1	This	_	PRON	_	_	4	nsubj	_	_
 2	has	_	AUX	_	_	4	aux	_	_
@@ -142,7 +142,7 @@
 13	funds	_	NOUN	_	_	8	obl	_	_
 14	.	_	PUNCT	_	_	4	punct	_	_
 
-# sentid = 11
+# sent_id = 11
 # text = This discordance between economic data and political rhetoric is familiar , or should be .
 1	This	_	DET	_	_	2	det	_	_
 2	discordance	_	NOUN	_	_	10	nsubj	_	_
@@ -160,12 +160,12 @@
 14	be	_	AUX	_	_	10	conj	_	_
 15	.	_	PUNCT	_	_	10	PUNCT	_	_
 
-# sentid = 12
+# sent_id = 12
 # text = The feasibility study estimates that it would take passengers about four minutes to cross the Potomac River on the gondola .
 1	The	_	DET	_	_	3	det	_	_
-2	feasibility	_	NOUN	_	_	3	compound	_   _
-3	study	_	NOUN	_	_	4	nsubj	_	_
-4	estimates	_	VERB	_	_	0	root	_	_
+2	feasibility	_	NOUN	_	_	3	compound	_   _ 
+3	study	_	NOUN	_	_	4	nsubj	_	_ #any reason why the line above isnt coloured? tabs? order?
+4	estimates	_	VERB	_	_	0	root	_	_ 
 5	that	_	SCONJ	_	_	8	mark	_	_
 6	it	_	PRON	_	_	8	expl	_	_
 7	would	_	AUX	_	_	8	aux	_	_
@@ -184,7 +184,7 @@
 20	gondola	_	NOUN	_	_	14	_	_	_
 21	.	_	PUNCT	_	_	4	punct	_	_
 
-# sentid = 13
+# sent_id = 13
 # text = he collected cards and traded them with the other boys
 1	He	_	PRON	_	_	2	nsubj	_	_
 2	collected	_	VERB	_	_	0	root	_	_
@@ -197,7 +197,7 @@
 9	other	_	ADJ	_	_	10	amod	_	_
 10	boys	_	NOUN	_	_	5	obl	_	_
 
-# sentid = 14
+# sent_id = 14
 # text = this crime carries a penalty of five years in prison
 1	This	_	DET	_	_	2	det	_	_
 2	crime	_	NOUN	_	_	3	nsubj	_	_
@@ -210,7 +210,7 @@
 9	in	_	ADP	_	_	10	case	_	_
 10	prison	_	NOUN	_	_	8	nmod	_	_
 
-# sentid = 15
+# sent_id = 15
 # text = the news was carried to every village in the province
 1	The	_	DET	_	_	2	det	_	_
 2	news	_	NOUN	_	_	4	nsubj:pass	_	_
@@ -223,7 +223,7 @@
 9	the	_	DET	_	_	10	det	_	_
 10	province	_	NOUN	_	_	7	nmod	_	_
 
-# sentid = 16
+# sent_id = 16
 # text = I carry these thoughts in the back of my head
 1	I	_	PRON	_	_	2	nsubj	_	_
 2	carry	_	VERB	_	_	0	root	_	_
@@ -236,7 +236,7 @@
 9	my	_	PRON	_	_	10	nmod:poss	_	_
 10	head	_	NOUN	_	_	7	nmod	_	_
 
-# sentid = 17
+# sent_id = 17
 # text = Adam would have been carried over into the life eternal
 # over, ADV or ADP?
 1	Adam	_	PROPN	_	_	5	nsubj:pass	_	_
@@ -263,7 +263,7 @@
 9	be	_	AUX	_	_	10	aux:pass	_	_
 10	replaced	_	VERB	_	_	4	conj	_	_
 
-# sentid = 19
+# sent_id = 19
 # text = she was incensed that this chit of a girl should dare to make a fool of her in front of the class
 # 18-20 fixed MWE? 
 1	she	_	PRON	_	_	3	nsubj	_	_
@@ -289,7 +289,7 @@
 21	the	_	DET	_	_	22	det	_	_
 22	class	_	NOUN	_	_	19	nmod	_	_
 
-# sentid = 20
+# sent_id = 20
 # text = the landslide he had in the electoral college obscured the narrowness of a victory based on just 43% of the popular vote
 1	the	_	DET	_	_	2	det	_	_
 2	landslide	_	NOUN	_	_	9	nsubj	_	_
@@ -298,7 +298,7 @@
 5	in	_	ADP	_	_	8	case	_	_
 6	the	_	DET	_	_	8	det	_	_
 7	electoral	_	ADJ	_	_	8	compound	_   _
-8	college	_	NOUN	_	_	4	obl	_	_
+8	college	_	NOUN	_	_	4	obl	_	_ #same question as sentid 12
 9	obscured	_	VERB	_	_	0	root	_	_
 10	the	_	DET	_	_	11	det	_	_
 11	narrowness	_	NOUN	_	_	9	obj	_	_
@@ -315,7 +315,7 @@
 22	popular	_	ADJ	_	_	23	amod	_	_
 23	vote	_	NOUN	_	_	19	nmod	_	_
 
-# sentid = 21
+# sent_id = 21
 # text = United States troops now carry atropine and autoinjectors in their first-aid kits to use in case of organophosphate nerve agent poisoning
 1	United	_	PROPN	_	_	2	compound	_	_
 2	States	_	PROPN	_	_	3	compound	_	_
@@ -337,11 +337,11 @@
 18	case	_	NOUN	_	_	17	dep	_	_
 19	of	_	ADP	_	_	17	dep	_	_
 20	organophosphate	_	NOUN	_	_	21	compound	_   _
-21	nerve	_	NOUN	_	_	22	compound	_	_
+21	nerve	_	NOUN	_	_	22	compound	_	_ #same question as sentid 12 & 20
 22	agent	_	NOUN	_	_	23	compound	_	_
 23	poisoning	_	NOUN	_	_	16	obl	_	_
 
-# sentid = 22
+# sent_id = 22
 # text = He may accomplish by craft in the long run what he cannot do by force and violence in the short one
 # I was a bit unsure of the "cannot" but followed an example from the en PUD where it was divided into "can" and "not"
 1	He	_	PRON	_	_	3	nsubj	_	_
@@ -367,7 +367,7 @@
 22	short	_	ADJ	_	_	23	amod	_	_
 23	one	_	NOUN	_	_	14	obl	_	_
 
-# sentid = 23
+# sent_id = 23
 # text = It has been said that only a hierarchical society with a leisure class at the top can produce works of art
 1	It	_	PRON	_	_	4	nsubj:pass	_	_
 2	has	_	AUX	_	_	4	aux	_	_
@@ -391,7 +391,7 @@
 20	of	_	ADP	_	_	21	case	_	_
 21	art	_	NOUN	_	_	19	nmod	_	_
 
-# sentid = 24
+# sent_id = 24
 # text = His ingenuous explanation that he would not have burned the church if he had not thought the bishop was in it
 1	His	_	PRON	_	_	3	nmod:poss	_	_
 2	ingenuous	_	ADJ	_	_	3	amod	_	_
