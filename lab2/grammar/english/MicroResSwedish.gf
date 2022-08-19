@@ -54,7 +54,7 @@ oper
         _ + "o"       => mkNounGen sg_indef (sg_indef + "n") pl_indef (pl_indef + "na") gender ;
         cyk + "el"    => mkNounGen sg_indef (cyk + "eln") pl_indef (pl_indef + "na") gender ;
         k + "or"      => mkNounGen sg_indef (k + "on") pl_indef (pl_indef + "na") gender ;
-        x + "ik"      => mkNounGen sg_indef (sg_indef + "en") pl_indef (pl_indef) gender ;
+        x + ("ik"|"lk")      => mkNounGen sg_indef (sg_indef + "en") pl_indef (pl_indef) gender ;
         _             => mkNounGen sg_indef (sg_indef + "en") pl_indef (pl_indef + "na" ) gender 
       }
     } ;
@@ -146,13 +146,15 @@ be_Verb : Verb = mkVerb "vara" "är" "varit" "var" ;
 
   mkAdjective1 : Str -> Adjective --maybe fix irregular adjectives more nicely
     = \pos_utr -> case pos_utr of {
+      x + ("rt"|"r"|"n"|"l") => mkAdjective4 pos_utr (pos_utr) (pos_utr + "a") (pos_utr + "a") ;
       x + "t" => mkAdjective4 pos_utr (pos_utr) (pos_utr) (pos_utr + "a") ;
       x + "a" => mkAdjective4 pos_utr (pos_utr) (pos_utr) (pos_utr) ;
       x + "y" => mkAdjective4 pos_utr (pos_utr) (pos_utr + "tt") (pos_utr + "a") ;
       x + "mal" => mkAdjective4 pos_utr (x + "malt") (x + "la") (x + "la") ;
       x + "d" => mkAdjective4 pos_utr (x + "tt") (pos_utr + "a") (pos_utr + "a") ;
-      lit + "en" => mkAdjective4 pos_utr ("liten") ("små") ("små") ;
+      lit + "en" => mkAdjective4 pos_utr ("liten") ("lilla") ("små") ;
       bl + "å" => mkAdjective4 pos_utr (pos_utr + "tt") (pos_utr + "a") (pos_utr + "a") ;
+      x + "o" => mkAdjective4 pos_utr (pos_utr) (pos_utr) (pos_utr) ;
       x =>  mkAdjective4 pos_utr (pos_utr) (x + "t") (x + "a") 
     } ;
 

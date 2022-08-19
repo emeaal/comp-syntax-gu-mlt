@@ -22,7 +22,7 @@ lincat
 
   Adv = {s : Str} ;  
   Prep = {s : Str} ;
-  Pron = {s : Case => Str ; a : Agreement ; g : Gender ; n : Number} ; -- shouldnt need gender here
+  Pron = {s : Case => Str ; a : Agreement ; g : Gender ; n : Number} ; -- gender?
   Det = {s : Gender => Str ; n : Number ; sp : Species ; g : Gender} ;
 
 
@@ -34,7 +34,7 @@ lin
 --Sentence 
 
   PredVPS np vp = {
-    s = np.s ! Nom ++ vp.verb.s ! Pres ++ vp.compl ! np.n ! np.g  --++ vp.compl.s ! np.a
+    s = np.s ! Nom ++ vp.verb.s ! Pres ++ vp.compl ! np.n ! np.g --++ vp.compl.s ! np.a
   } ;
 
 
@@ -46,8 +46,13 @@ lin
   
   UseComp comp = {
       verb = be_Verb ;     -- "att vara"
-      compl = \\num,gen => [] ;
-      } ;
+      compl = table {
+          n => table {
+            g => comp.s ! Positive ! n ! g ! Indef
+          }
+      }
+  } ;
+
 
   --AdvVP vp adv =
     --  vp ** {compl = vp.compl} ;
@@ -57,10 +62,15 @@ lin
     compl = \\num, gen => vp.compl ! num ! gen ++ adv.s
   } ;
 
-  ComplV2 v2 np = {
-    verb = v2 ;
-    compl = \\num,gen => []
-  } ; 
+
+ ComplV2 v2 np = {
+      verb = v2 ;
+      compl = table {
+        n => table {
+          g => np.s ! Obj
+        } 
+      }
+      } ;
 
 --Noun
 
@@ -242,26 +252,26 @@ lin blue_A = mkA "blå" ;
 
 ---Verbs---
 lin come_V = mkV "komma" "kom" "kommit" ;
-lin break_V2 = mkV2 (mkV "bryta" "bröt" "brutit") ;
-lin buy_V2 = mkV2 (mkV "köpa") ;
-lin drink_V2 = mkV2 (mkV "dricka" "drack" "druckit") ;
-lin eat_V2 = mkV2 (mkV "äta" "åt" "ätit") ;
-lin find_V2 = mkV2 (mkV "hitta" "hittade" "hittat") ;
+lin break_V2 = mkV2 (mkV "bryta" "bröt" "brutit") ; --v2
+lin buy_V2 = mkV2 (mkV "köpa") ; --v2
+lin drink_V2 = mkV2 (mkV "dricka" "drack" "druckit") ; --v2
+lin eat_V2 = mkV2 (mkV "äta" "åt" "ätit") ; --v2
+lin find_V2 = mkV2 (mkV "hitta" "hittade" "hittat") ; --v2
 lin go_V = mkV "gå" "gick" "gått" ;
 lin jump_V = mkV "hoppa" ;
-lin kill_V2 = mkV2 (mkV "döda") ;
+lin kill_V2 = mkV2 (mkV "döda") ; --v2
 lin live_V = mkV "leva" ;
-lin love_V2 = mkV2 (mkV "älska") ;
+lin love_V2 = mkV2 (mkV "älska") ; --v2
 lin play_V = mkV "leka" ;
-lin read_V2 = mkV2 (mkV "läsa" "läste" "läst") ;
+lin read_V2 = mkV2 (mkV "läsa" "läste" "läst") ; --v2
 lin run_V = mkV "springa" "sprang" "sprungit" ;
-lin see_V2 = mkV2 (mkV "se" "såg" "sett") ; 
+lin see_V2 = mkV2 (mkV "se" "såg" "sett") ; --v2
 lin sleep_V = mkV "sova" "sov" "sovit" ;
 lin swim_V = mkV "simma" "simmade" "simmat" ; --check
-lin teach_V2 = mkV2 (mkV "lära" "lärde" "lärt") ;
+lin teach_V2 = mkV2 (mkV "lära" "lärde" "lärt") ; --v2
 lin travel_V = mkV "resa" ;
-lin understand_V2 = mkV2 (mkV "förstå" "förstod" "förstått") ;
-lin wait_V2 = mkV2 (mkV "vänta") ; -- vänta på <-- add "på" and fix particle
+lin understand_V2 = mkV2 (mkV "förstå" "förstod" "förstått") ; --v2
+lin wait_V2 = mkV2 (mkV "vänta") ; -- vänta på <-- add "på" and fix particle --v2
 lin walk_V = mkV "gå" "gick" "gått";
 
 ---------------- Paradigms part ---------------------
