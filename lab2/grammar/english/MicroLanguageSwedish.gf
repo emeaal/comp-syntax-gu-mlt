@@ -54,9 +54,6 @@ lin
   } ;
 
 
-  --AdvVP vp adv =
-    --  vp ** {compl = vp.compl} ;
-
   AdvVP vp adv = {
     verb = vp.verb ;
     compl = \\num, gen => vp.compl ! num ! gen ++ adv.s
@@ -150,6 +147,7 @@ AdjCN ap cn = {
 --extra
   lin already_Adv = mkAdv "redan" ;
   lin now_Adv = mkAdv "nu" ;
+  lin when_Adv = mkAdv "när" ;
 
   PrepNP prep np = {s = prep.s ++ np.s ! Obj} ;
 
