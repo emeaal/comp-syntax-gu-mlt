@@ -3,12 +3,16 @@ resource MicroResSwedish = open Prelude in {
 param
   Number = Sing | Plur ;
   Gender = Utr | Neut ;
-  Case = Nom | Geni ;
+  Case = Nom | Geni | Obj ;
   Species = Def | Indef ;
   Degree = Positive ; --| Comparative | Superlative ;
   Voice = Active | Passive ;
 
   VForm = Inf | Pres | Pret | Sup;
+
+  Art = Article | NoArticle ;
+
+  Agreement = Agr Number ; -- Species Gender ;
 
 
 oper
@@ -32,6 +36,7 @@ oper
       pojk + "e"  => mkNoun2 sg_indef (pojk + "ar") gender ;
       _ + "o"     => mkNoun2 sg_indef (sg_indef + "r") gender ;
       x + "a"     => mkNoun2 sg_indef (x + "or") gender ;
+      x + "ik"  => mkNoun2 sg_indef (sg_indef) gender ;
       _           => mkNoun2 sg_indef (sg_indef + "ar") gender 
     }
   } ;
@@ -49,6 +54,7 @@ oper
         _ + "o"       => mkNounGen sg_indef (sg_indef + "n") pl_indef (pl_indef + "na") gender ;
         cyk + "el"    => mkNounGen sg_indef (cyk + "eln") pl_indef (pl_indef + "na") gender ;
         k + "or"      => mkNounGen sg_indef (k + "on") pl_indef (pl_indef + "na") gender ;
+        x + "ik"      => mkNounGen sg_indef (sg_indef + "en") pl_indef (pl_indef) gender ;
         _             => mkNounGen sg_indef (sg_indef + "en") pl_indef (pl_indef + "na" ) gender 
       }
     } ;
@@ -88,7 +94,10 @@ oper
 
 Verb : Type = {s : VForm => Str} ;
 
-Verb2 : Type = Verb ** {c : Str} ;
+Verb2 : Type = Verb ** {c : Str} ; --transitive verbs
+
+be_Verb : Verb = mkVerb "vara" "är" "varit" "var" ;
+
 
   mkVerb : (inf,pres,pret,Sup : Str) -> Verb
     = \inf,pres,pret,Sup -> {
@@ -109,7 +118,9 @@ Verb2 : Type = Verb ** {c : Str} ;
     x + "a" => case x of {
       _ + ("s"|"öp"|"ek")         => mkVerb inf (x + "er") (x + "te") (x + "t") ;
       _ + "sk"                    => mkVerb inf (x + "ar") (x + "ade") (x + "at") ;
+      _ + "imm"                   => mkVerb inf (x + "ar") (x + "ade") (x + "at") ;
       _ + ("k"|"yt"|"mm")         => mkVerb inf (x + "er") (x + "ade") (x + "at") ; 
+      _ + "ät"                    => mkVerb inf (x + "er") (inf + "de") (inf + "t") ;
       _ + ("m"|"t"|"pp"|"d"|"ek") => mkVerb inf (inf + "r") (inf + "de") (inf + "t") ;
       _ + ("v"|"g")               => mkVerb inf (x + "er") (x + "de") (x + "t") ;
       _ + "r"                     => mkVerb inf (x) (x + "de") (x + "t") ;
@@ -133,14 +144,14 @@ Verb2 : Type = Verb ** {c : Str} ;
       s : Degree => Number => Gender => Species => Str ; 
   } ;
 
-  mkAdjective1 : Str -> Adjective
+  mkAdjective1 : Str -> Adjective --maybe fix irregular adjectives more nicely
     = \pos_utr -> case pos_utr of {
       x + "t" => mkAdjective4 pos_utr (pos_utr) (pos_utr) (pos_utr + "a") ;
       x + "a" => mkAdjective4 pos_utr (pos_utr) (pos_utr) (pos_utr) ;
       x + "y" => mkAdjective4 pos_utr (pos_utr) (pos_utr + "tt") (pos_utr + "a") ;
       x + "mal" => mkAdjective4 pos_utr (x + "malt") (x + "la") (x + "la") ;
       x + "d" => mkAdjective4 pos_utr (x + "tt") (pos_utr + "a") (pos_utr + "a") ;
-      lit + "en" => mkAdjective4 pos_utr ("små") ("små") ("små") ;
+      lit + "en" => mkAdjective4 pos_utr ("liten") ("små") ("små") ;
       bl + "å" => mkAdjective4 pos_utr (pos_utr + "tt") (pos_utr + "a") (pos_utr + "a") ;
       x =>  mkAdjective4 pos_utr (pos_utr) (x + "t") (x + "a") 
     } ;

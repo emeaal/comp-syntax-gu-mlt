@@ -6,31 +6,169 @@ concrete MicroLanguageSwedish of MicroLang = open MicroResSwedish, Prelude in {
 lincat
   Utt = {s : Str} ;
   S = {s : Str} ;
-  NP = {s : Case => Str ; n : Number ; g : Gender} ;
-  VP = {verb : Verb ; compl : Str} ;
+  NP = {s : Case => Str ; n : Number ; g : Gender ; a : Agreement} ;
+  VP = {verb : Verb ; compl : Number => Gender => Str } ; -- ; compl : Complement} ;
   AP = Adjective ;
-
+  
+   
   N = Noun ;
+  CN = Noun ;
 
   V = Verb ;
   V2 = Verb2 ;
 
-  A = Adjective ;
+  A = Adjective ;  
+  Comp = Adjective ;  
+
+  Adv = {s : Str} ;  
+  Prep = {s : Str} ;
+  Pron = {s : Case => Str ; a : Agreement ; g : Gender ; n : Number} ; -- shouldnt need gender here
+  Det = {s : Gender => Str ; n : Number ; sp : Species ; g : Gender} ;
 
 
 lin
 -- Phrase
   UttS s = s ;
-  UttNP np = {s = np.s ! Nom } ; -- ! Acc
+  UttNP np = {s = np.s ! Nom } ;
+
+--Sentence 
+
+  PredVPS np vp = {
+    s = np.s ! Nom ++ vp.verb.s ! Pres ++ vp.compl ! np.n ! np.g  --++ vp.compl.s ! np.a
+  } ;
 
 
--- Verb 
-
+--Verb 
   UseV v = {
       verb = v ;
-      compl = [] ;
+      compl = \\num,gen => [] ;
+      } ; 
+  
+  UseComp comp = {
+      verb = be_Verb ;     -- "att vara"
+      compl = \\num,gen => [] ;
       } ;
 
+  --AdvVP vp adv =
+    --  vp ** {compl = vp.compl} ;
+
+  AdvVP vp adv = {
+    verb = vp.verb ;
+    compl = \\num, gen => vp.compl ! num ! gen ++ adv.s
+  } ;
+
+  ComplV2 v2 np = {
+    verb = v2 ;
+    compl = \\num,gen => []
+  } ; 
+
+--Noun
+
+UseN n = n ;
+
+--Determiners 
+
+  DetCN det cn = {
+    s = table {
+      c => det.s ! cn.g ++ cn.s ! det.n ! det.sp ! c  
+    };
+    a = Agr det.n ;
+    g = det.g ; --eller det.g ?? cn.g?
+    n = det.n 
+    } ;
+
+
+  a_Det = {
+    s = table {
+      Utr => "en" ;
+      Neut => "ett"
+    } ;
+    n = Sing ;
+    g = Utr ;
+    sp = Indef
+  } ;
+
+  aPl_Det= {
+    s = table {
+      Utr => "" ;
+      Neut => ""
+    } ;
+    n = Plur ;
+    g = Utr ;
+    sp = Indef
+  } ;
+
+  the_Det = {
+    s = table {
+      Utr => "den" ;
+      Neut => "det"
+    } ;
+    g = Utr ;
+    n = Sing ;
+    sp = Def
+  } ;
+
+  thePl_Det = {
+    s = table {
+      Utr => "de" ;
+      Neut => "de"
+    } ;
+    n = Plur ;
+    g = Utr ;
+    sp = Def
+  } ;
+
+
+AdjCN ap cn = {
+    s = table {
+      n => table {
+        sp => table {
+          c => ap.s ! Positive ! n ! cn.g ! sp ++ cn.s ! n ! sp ! c
+        } 
+      }
+    } ;
+    g = cn.g ;
+    a = Article
+  } ;
+ 
+
+  PositA a = a ;
+
+  CompAP ap = ap ;
+
+
+--extra
+  lin already_Adv = mkAdv "redan" ;
+  lin now_Adv = mkAdv "nu" ;
+
+  PrepNP prep np = {s = prep.s ++ np.s ! Obj} ;
+
+    in_Prep = {s = "i"} ;
+    on_Prep = {s = "på"} ;
+    with_Prep = {s = "med"} ;
+
+-- Pronouns
+ 
+  UsePron p = p ;
+
+   he_Pron = {
+     s = table {Nom => "han" ; Obj => "honom" ; Geni => "hans"} ;
+     a = Agr Sing ;
+     g = Utr ;
+     n = Sing
+      } ;
+    she_Pron = {
+      s = table {Nom => "hon" ; Obj => "henne" ; Geni => "hennes"} ;
+      a = Agr Sing ;
+      g = Utr ; 
+      n = Sing
+    } ;
+    they_Pron = {
+      s = table {Nom => "de" ; Obj => "dem" ; Geni => "deras"} ;
+      a = Agr Plur ;
+      g = Utr ;
+      n = Plur
+    } ;
 
 
 
@@ -79,27 +217,27 @@ lin wine_N = mkN "vin" Neut ;
 lin woman_N = mkN "kvinna" Utr ;
 
 ---Adjectives---
-lin bad_A = mkA "dålig" ; -- sämre sämst xx
-lin big_A = mkA "stor" ; -- större störst xx
-lin black_A = mkA "svart" ; -- svartare svartast
-lin clean_A = mkA "ren" ; -- renare renast
-lin clever_A = mkA "smart" ; --smartare smarast
-lin cold_A = mkA "kall" ; --kallare kallast
-lin dirty_A = mkA "smutsig" ; --smutsigare smutsigast 
-lin good_A = mkA "bra" ; --bättre bäst xx
-lin green_A = mkA "grön" ; --grönare grönast
-lin heavy_A = mkA "tung" ; -- tyngre tyngst xx
-lin hot_A = mkA "het" ; --hetare hetast
-lin new_A = mkA "ny" ; --nyare nyast
-lin old_A = mkA "gammal" ; -- äldre äldst xx
-lin ready_A = mkA "redo" ; --redo ??
-lin red_A = mkA "röd" ; --rödare rödast
-lin small_A = mkA "liten" ; --mindre minst xx
-lin warm_A = mkA "varm" ; --varmare varmast
-lin white_A = mkA "vit" ; --vitare vitast
-lin yellow_A = mkA "gul" ; --gulare gulast
-lin young_A = mkA "ung" ; --yngre yngst xx
-lin blue_A = mkA "blå" ; --blåare blåast
+lin bad_A = mkA "dålig" ;
+lin big_A = mkA "stor" ; 
+lin black_A = mkA "svart" ;
+lin clean_A = mkA "ren" ;
+lin clever_A = mkA "smart" ;
+lin cold_A = mkA "kall" ;
+lin dirty_A = mkA "smutsig" ; 
+lin good_A = mkA "bra" ;
+lin green_A = mkA "grön" ; 
+lin heavy_A = mkA "tung" ; 
+lin hot_A = mkA "het" ;
+lin new_A = mkA "ny" ; 
+lin old_A = mkA "gammal" ;
+lin ready_A = mkA "redo" ;
+lin red_A = mkA "röd" ;
+lin small_A = mkA "liten" ;
+lin warm_A = mkA "varm" ;
+lin white_A = mkA "vit" ;
+lin yellow_A = mkA "gul" ;
+lin young_A = mkA "ung" ;
+lin blue_A = mkA "blå" ;
 
 
 ---Verbs---
@@ -117,13 +255,13 @@ lin love_V2 = mkV2 (mkV "älska") ;
 lin play_V = mkV "leka" ;
 lin read_V2 = mkV2 (mkV "läsa" "läste" "läst") ;
 lin run_V = mkV "springa" "sprang" "sprungit" ;
-lin see_V2 = mkV2 (mkV "se" "såg" "sett") ;
+lin see_V2 = mkV2 (mkV "se" "såg" "sett") ; 
 lin sleep_V = mkV "sova" "sov" "sovit" ;
 lin swim_V = mkV "simma" "simmade" "simmat" ; --check
 lin teach_V2 = mkV2 (mkV "lära" "lärde" "lärt") ;
 lin travel_V = mkV "resa" ;
 lin understand_V2 = mkV2 (mkV "förstå" "förstod" "förstått") ;
---lin wait_V2 = mkV2 (mkV "vänta" "på") ;
+lin wait_V2 = mkV2 (mkV "vänta") ; -- vänta på <-- add "på" and fix particle
 lin walk_V = mkV "gå" "gick" "gått";
 
 ---------------- Paradigms part ---------------------
@@ -151,8 +289,8 @@ oper
   mkV2 = overload {
     mkV2 : Verb -> Verb2 
       = \verb -> lin V2 (verb ** {c = []}) ;
-    --mKv2 : Verb -> Str -> Verb2 
-      --= \verb,comp -> lin V2 (verb ** {c = comp}) 
+    mKV2 : Verb -> Str -> Verb2  --do i need this? was commented out before
+      = \verb,comp -> lin V2 (verb ** {c = comp}) -- see above
   } ;
 
   mkA = overload {
@@ -160,10 +298,10 @@ oper
       = \pos_utr
         -> lin A (mkAdjective1 pos_utr) ;
   } ;
-  
-  
-  --Str -> A
-    --= \s -> lin A {s = s} ;
+
+  mkAdv : Str -> Adv
+    = \adv -> lin Adv {s = adv} ;
+
 
 
 }
