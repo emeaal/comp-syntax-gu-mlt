@@ -147,7 +147,6 @@ AdjCN ap cn = {
 --extra
   lin already_Adv = mkAdv "redan" ;
   lin now_Adv = mkAdv "nu" ;
-  lin when_Adv = mkAdv "när" ;
 
   PrepNP prep np = {s = prep.s ++ np.s ! Obj} ;
 
@@ -228,24 +227,24 @@ lin woman_N = mkN "kvinna" Utr ;
 lin bad_A = mkA "dålig" ;
 lin big_A = mkA "stor" ; 
 lin black_A = mkA "svart" ;
-lin clean_A = mkA "ren" ;
+lin clean_A = mkA "ren" "rent" ;
 lin clever_A = mkA "smart" ;
-lin cold_A = mkA "kall" ;
-lin dirty_A = mkA "smutsig" ; 
+lin cold_A = mkA "kall" "kallt" ;
+lin dirty_A = mkA "smutsig" "smutsigt" ; 
 lin good_A = mkA "bra" ;
-lin green_A = mkA "grön" ; 
-lin heavy_A = mkA "tung" ; 
-lin hot_A = mkA "het" ;
-lin new_A = mkA "ny" ; 
+lin green_A = mkA "grön" "grönt" ; 
+lin heavy_A = mkA "tung" "tungt" ; 
+lin hot_A = mkA "het" "hett" ;
+lin new_A = mkA "ny" "nytt" ; 
 lin old_A = mkA "gammal" ;
 lin ready_A = mkA "redo" ;
-lin red_A = mkA "röd" ;
-lin small_A = mkA "liten" ;
-lin warm_A = mkA "varm" ;
-lin white_A = mkA "vit" ;
-lin yellow_A = mkA "gul" ;
-lin young_A = mkA "ung" ;
-lin blue_A = mkA "blå" ;
+lin red_A = mkA "röd" "rött" ;
+lin small_A = mkA "liten" "litet" ;
+lin warm_A = mkA "varm" "varmt" ;
+lin white_A = mkA "vit" "vitt" ;
+lin yellow_A = mkA "gul" "gult" ;
+lin young_A = mkA "ung" "ungt" ; 
+lin blue_A = mkA "blå" "blått" ;
 
 
 ---Verbs---
@@ -305,6 +304,9 @@ oper
     mkA : Str -> Adjective
       = \pos_utr
         -> lin A (mkAdjective1 pos_utr) ;
+    mkA : Str -> Str -> Adjective
+    = \pos_utr,pos_neutr
+      -> lin A (mkAdjective2 pos_utr pos_neutr)
   } ;
 
   mkAdv : Str -> Adv

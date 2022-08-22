@@ -146,7 +146,6 @@ be_Verb : Verb = mkVerb "vara" "är" "varit" "var" ;
 
   mkAdjective1 : Str -> Adjective --maybe fix irregular adjectives more nicely
     = \pos_utr -> case pos_utr of {
-      lit + "en"  => mkAdjective4 pos_utr ("litet") ("små") ("små") ; --wrong for small_A
       x + "mal" => mkAdjective4 pos_utr (x + "malt") (x + "la") (x + "la") ;
       x + ("rt"|"r"|"n"|"l"|"g") => mkAdjective4 pos_utr (pos_utr) (pos_utr + "a") (pos_utr + "a") ;
       x + "t" => mkAdjective4 pos_utr (pos_utr) (pos_utr) (pos_utr + "a") ;
@@ -157,6 +156,14 @@ be_Verb : Verb = mkVerb "vara" "är" "varit" "var" ;
       x + "o" => mkAdjective4 pos_utr (pos_utr) (pos_utr) (pos_utr) ;
       x =>  mkAdjective4 pos_utr (pos_utr) (x + "t") (x + "a") 
     } ;
+
+  mkAdjective2 : Str -> Str -> Adjective --maybe fix irregular adjectives more nicely
+    = \pos_utr,pos_neutr -> case pos_utr of {
+      li + "ten"       => mkAdjective4 pos_utr (pos_neutr) ("små") ("lilla") ;
+      x + ("y"|"n"|"d"|"å"|"l"|"g")    => mkAdjective4 pos_utr (pos_neutr) (pos_utr + "a") (pos_utr + "a") ;
+      x =>  mkAdjective4 pos_utr (x + "t") (pos_utr + "a") (pos_utr + "a") 
+    } ;
+  
 
   mkAdjective4 : Str -> Str -> Str -> Str -> Adjective
     = \pos_utr,pos_neutr,pos_plu,def_plu -> {
