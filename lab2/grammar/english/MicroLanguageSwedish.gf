@@ -198,7 +198,7 @@ lin cat_N = mkN "katt" Utr ; -- check
 lin child_N = mkN "barn" Neut ;
 lin city_N = mkN "stad" "städer" Utr ;
 lin cloud_N = mkN "moln" Neut ;
-lin computer_N = mkN "dator" "datorer" Utr ; --find a rule?
+lin computer_N = mkN "dator" "datorer" Utr ;
 lin cow_N = mkN "ko" Utr; 
 lin dog_N = mkN "hund" Utr ;
 lin fire_N = mkN "eld" Utr ;
@@ -239,7 +239,7 @@ lin new_A = mkA "ny" "nytt" ;
 lin old_A = mkA "gammal" ;
 lin ready_A = mkA "redo" ;
 lin red_A = mkA "röd" "rött" ;
-lin small_A = mkA "liten" "litet" ;
+lin small_A = mkA "liten" "litet" "lilla" "små" ; --solution here might not be perfect
 lin warm_A = mkA "varm" "varmt" ;
 lin white_A = mkA "vit" "vitt" ;
 lin yellow_A = mkA "gul" "gult" ;
@@ -306,7 +306,10 @@ oper
         -> lin A (mkAdjective1 pos_utr) ;
     mkA : Str -> Str -> Adjective
     = \pos_utr,pos_neutr
-      -> lin A (mkAdjective2 pos_utr pos_neutr)
+      -> lin A (mkAdjective2 pos_utr pos_neutr) ;
+    mkA : Str -> Str -> Str -> Str -> Adjective
+    = \pos_utr,pos_neutr,pos_def,pos_plu 
+      -> lin A (mkAdjectiveSmall pos_utr pos_neutr pos_def pos_plu )
   } ;
 
   mkAdv : Str -> Adv
