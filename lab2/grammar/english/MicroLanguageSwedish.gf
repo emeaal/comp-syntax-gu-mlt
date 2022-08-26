@@ -251,7 +251,7 @@ lin language_N = mkN "språk" Neut ;
 lin man_N = mkN "man" "mannen" "män" "männen" Utr ;
 lin milk_N = mkN "mjölk" Utr; -- uncountable
 lin music_N = mkN "musik" Utr ; -- uncountable
-lin river_N = mkN "å" Utr ; --flod
+lin river_N = mkN "flod" Utr ;
 lin sea_N = mkN "hav" Neut ;
 lin ship_N = mkN "skepp" Neut ; -- uncountable
 lin star_N = mkN "stjärna" Utr ;
@@ -334,8 +334,8 @@ oper
   mkV2 = overload {
     mkV2 : Verb -> Verb2 
       = \verb -> lin V2 (verb ** {c = []}) ;
-    mKV2 : Verb -> Str -> Verb2  --do i need this? was commented out before
-      = \verb,p -> lin V2 (verb ** {c = p}) -- see above
+    mKV2 : Verb -> Str -> Verb2  -- for "vänta" "på"
+      = \verb,p -> lin V2 (verb ** {c = p}) 
   } ;
 
   
