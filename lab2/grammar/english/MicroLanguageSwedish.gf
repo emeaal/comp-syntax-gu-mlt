@@ -39,10 +39,16 @@ lin
 
 
 --Verb 
+
+
   UseV v = {
-      verb = v ;
-      compl = \\num,gen => [] ;
-      } ; 
+    verb = v ;
+    compl = table {
+      num => table {
+        gen => [] 
+      }
+    }
+  } ;
   
   UseComp comp = {
       verb = be_Verb ;     -- "att vara"
@@ -53,10 +59,13 @@ lin
       }
   } ;
 
-
   AdvVP vp adv = {
     verb = vp.verb ;
-    compl = \\num, gen => vp.compl ! num ! gen ++ adv.s
+    compl = table {
+      num => table {
+        gen => vp.compl ! num ! gen ++ adv.s
+      }
+    }
   } ;
 
 
@@ -80,7 +89,7 @@ UseN n = n ;
       c => det.s ! cn.g ++ cn.s ! det.n ! det.sp ! c  
     };
     a = Agr det.n ;
-    g = det.g ; --eller det.g ?? cn.g?
+    g = cn.g ; --eller det.g ?? cn.g?
     n = det.n 
     } ;
 
@@ -198,7 +207,7 @@ lin cat_N = mkN "katt" Utr ; -- check
 lin child_N = mkN "barn" Neut ;
 lin city_N = mkN "stad" "städer" Utr ;
 lin cloud_N = mkN "moln" Neut ;
-lin computer_N = mkN "dator" "datorer" Utr ;
+lin computer_N = mkN "dator" "datorer" Utr ; --find a rule?
 lin cow_N = mkN "ko" Utr; 
 lin dog_N = mkN "hund" Utr ;
 lin fire_N = mkN "eld" Utr ;
