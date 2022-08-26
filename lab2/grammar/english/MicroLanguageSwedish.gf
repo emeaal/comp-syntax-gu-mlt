@@ -7,7 +7,7 @@ lincat
   Utt = {s : Str} ;
   S = {s : Str} ;
   NP = {s : Case => Str ; n : Number ; g : Gender ; a : Agreement} ;
-  VP = {verb : Verb ; compl : Number => Gender => Str } ; -- ; compl : Complement} ;
+  VP = {verb : Verb ; part : Str ; compl : Number => Gender => Str } ; -- ; compl : Complement} ;
   AP = Adjective ;
   
    
@@ -23,18 +23,18 @@ lincat
   Adv = {s : Str} ;  
   Prep = {s : Str} ;
   Pron = {s : Case => Str ; a : Agreement ; g : Gender ; n : Number} ; -- gender?
-  Det = {s : Gender => Str ; n : Number ; sp : Species ; g : Gender} ;
+  Det = {s : Gender => Art => Str ; n : Number ; sp : Species ; g : Gender} ;
 
 
 lin
 -- Phrase
   UttS s = s ;
-  UttNP np = {s = np.s ! Nom } ;
+  UttNP np = {s = np.s ! Obj } ;
 
 --Sentence 
 
   PredVPS np vp = {
-    s = np.s ! Nom ++ vp.verb.s ! Pres ++ vp.compl ! np.n ! np.g --++ vp.compl.s ! np.a
+    s = np.s ! Nom ++ vp.verb.s ! Pres ++ vp.part ++ vp.compl ! np.n ! np.g --++ vp.compl.s ! np.a
   } ;
 
 
@@ -43,6 +43,7 @@ lin
 
   UseV v = {
     verb = v ;
+    part = "" ;
     compl = table {
       num => table {
         gen => [] 
@@ -52,6 +53,7 @@ lin
   
   UseComp comp = {
       verb = be_Verb ;     -- "att vara"
+      part = "" ;
       compl = table {
           n => table {
             g => comp.s ! Positive ! n ! g ! Indef
@@ -59,8 +61,10 @@ lin
       }
   } ;
 
+
   AdvVP vp adv = {
     verb = vp.verb ;
+    part = "" ;
     compl = table {
       num => table {
         gen => vp.compl ! num ! gen ++ adv.s
@@ -69,14 +73,16 @@ lin
   } ;
 
 
- ComplV2 v2 np = {
-      verb = v2 ;
+ ComplV2 v np = {
+      verb = v ;
+      part = v.c ;
       compl = table {
         n => table {
           g => np.s ! Obj
         } 
       }
       } ;
+
 
 --Noun
 
@@ -86,38 +92,55 @@ UseN n = n ;
 
   DetCN det cn = {
     s = table {
-      c => det.s ! cn.g ++ cn.s ! det.n ! det.sp ! c  
+      c => det.s ! cn.g ! cn.a ++ cn.s ! det.n ! det.sp ! c  
     };
     a = Agr det.n ;
     g = cn.g ; --eller det.g ?? cn.g?
     n = det.n 
     } ;
 
-
-  a_Det = {
+   a_Det = {
     s = table {
-      Utr => "en" ;
-      Neut => "ett"
+      Utr => table {
+        Article => "en" ;
+        NoArticle => "en"
+      } ;
+      Neut => table {
+        Article => "ett" ;
+        NoArticle => "ett" 
+      } 
     } ;
+    g = Neut ;
     n = Sing ;
-    g = Utr ;
     sp = Indef
   } ;
 
-  aPl_Det= {
+  aPl_Det = {
     s = table {
-      Utr => "" ;
-      Neut => ""
+      Utr => table {
+        Article => "" ;
+        NoArticle => ""
+      } ;
+      Neut => table {
+        Article => "" ;
+        NoArticle => "" 
+      } 
     } ;
-    n = Plur ;
     g = Utr ;
+    n = Plur ;
     sp = Indef
   } ;
 
   the_Det = {
     s = table {
-      Utr => "den" ;
-      Neut => "det"
+      Utr => table {
+        Article => "den" ;
+        NoArticle => ""
+      } ;
+      Neut => table {
+        Article => "det" ;
+        NoArticle => "" 
+      } 
     } ;
     g = Utr ;
     n = Sing ;
@@ -126,11 +149,17 @@ UseN n = n ;
 
   thePl_Det = {
     s = table {
-      Utr => "de" ;
-      Neut => "de"
+      Utr => table {
+        Article => "de" ;
+        NoArticle => ""
+      } ;
+      Neut => table {
+        Article => "de" ;
+        NoArticle => "" 
+      } 
     } ;
-    n = Plur ;
     g = Utr ;
+    n = Plur ;
     sp = Def
   } ;
 
@@ -215,14 +244,14 @@ lin fish_N = mkN "fisk" Utr ;
 lin flower_N = mkN "blomma" Utr ;
 lin friend_N = mkN "vän" "vännen" "vänner" "vännerna" Utr ; --check
 lin girl_N = mkN "flicka" Utr ;
-lin grammar_N = mkN "grammatik" "grammatiker" Utr ; ---uncountable, check for mass noun
+lin grammar_N = mkN "grammatik" Utr ; ---uncountable, check for mass noun
 lin horse_N = mkN "häst" Utr ;
 lin house_N = mkN "hus" Neut ; --uncountable, check S ending
 lin language_N = mkN "språk" Neut ;
 lin man_N = mkN "man" "mannen" "män" "männen" Utr ;
-lin milk_N = mkN "mjölk" "mjölk" Utr; -- uncountable
+lin milk_N = mkN "mjölk" Utr; -- uncountable
 lin music_N = mkN "musik" Utr ; -- uncountable
-lin river_N = mkN "flod" Utr ;
+lin river_N = mkN "å" Utr ; --flod
 lin sea_N = mkN "hav" Neut ;
 lin ship_N = mkN "skepp" Neut ; -- uncountable
 lin star_N = mkN "stjärna" Utr ;
@@ -233,20 +262,20 @@ lin wine_N = mkN "vin" Neut ;
 lin woman_N = mkN "kvinna" Utr ;
 
 ---Adjectives---
-lin bad_A = mkA "dålig" ;
-lin big_A = mkA "stor" ; 
+lin bad_A = mkA "dålig" "dåligt" ;
+lin big_A = mkA "stor" "stort" ; 
 lin black_A = mkA "svart" ;
 lin clean_A = mkA "ren" "rent" ;
-lin clever_A = mkA "smart" ;
+lin clever_A = mkA "klok" "klokt" ; --smart
 lin cold_A = mkA "kall" "kallt" ;
 lin dirty_A = mkA "smutsig" "smutsigt" ; 
-lin good_A = mkA "bra" ;
+lin good_A = mkA "god" ; --bra
 lin green_A = mkA "grön" "grönt" ; 
 lin heavy_A = mkA "tung" "tungt" ; 
 lin hot_A = mkA "het" "hett" ;
 lin new_A = mkA "ny" "nytt" ; 
 lin old_A = mkA "gammal" ;
-lin ready_A = mkA "redo" ;
+lin ready_A = mkA "färdig" "färdigt" ; --redo
 lin red_A = mkA "röd" "rött" ;
 lin small_A = mkA "liten" "litet" "lilla" "små" ; --solution here might not be perfect
 lin warm_A = mkA "varm" "varmt" ;
@@ -262,7 +291,7 @@ lin break_V2 = mkV2 (mkV "bryta" "bröt" "brutit") ; --v2
 lin buy_V2 = mkV2 (mkV "köpa") ; --v2
 lin drink_V2 = mkV2 (mkV "dricka" "drack" "druckit") ; --v2
 lin eat_V2 = mkV2 (mkV "äta" "åt" "ätit") ; --v2
-lin find_V2 = mkV2 (mkV "hitta" "hittade" "hittat") ; --v2
+lin find_V2 = mkV2 (mkV "finna" "fann" "funnit") ;--"hitta" "hittade" "hittat") ; --v2 
 lin go_V = mkV "gå" "gick" "gått" ;
 lin jump_V = mkV "hoppa" ;
 lin kill_V2 = mkV2 (mkV "döda") ; --v2
@@ -274,10 +303,10 @@ lin run_V = mkV "springa" "sprang" "sprungit" ;
 lin see_V2 = mkV2 (mkV "se" "såg" "sett") ; --v2
 lin sleep_V = mkV "sova" "sov" "sovit" ;
 lin swim_V = mkV "simma" "simmade" "simmat" ; --check
-lin teach_V2 = mkV2 (mkV "lära" "lärde" "lärt") ; --v2
+lin teach_V2 = mkV2 (mkV "undervisa" "undervisade" "undervisat" ) ;--"lära" "lärde" "lärt") ; --v2
 lin travel_V = mkV "resa" ;
 lin understand_V2 = mkV2 (mkV "förstå" "förstod" "förstått") ; --v2
-lin wait_V2 = mkV2 (mkV "vänta") ; -- vänta på <-- add "på" and fix particle --v2
+lin wait_V2 = mkV2 (mkV "vänta") "på"  ; -- vänta på <-- add "på" and fix particle --v2
 lin walk_V = mkV "gå" "gick" "gått";
 
 ---------------- Paradigms part ---------------------
@@ -306,8 +335,10 @@ oper
     mkV2 : Verb -> Verb2 
       = \verb -> lin V2 (verb ** {c = []}) ;
     mKV2 : Verb -> Str -> Verb2  --do i need this? was commented out before
-      = \verb,comp -> lin V2 (verb ** {c = comp}) -- see above
+      = \verb,p -> lin V2 (verb ** {c = p}) -- see above
   } ;
+
+  
 
   mkA = overload {
     mkA : Str -> Adjective

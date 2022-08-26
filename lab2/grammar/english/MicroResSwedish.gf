@@ -18,14 +18,15 @@ param
 oper
   Noun : Type = { s : Number => Species => Case => Str ;  
                   g : Gender ;
+                  a : Art 
   } ;
 
   mkNoun1 : Str -> Gender -> Noun --takes one string+gender from lexicon
     = \sg_indef,gender -> case gender of {
     Neut => case sg_indef of {
       vatt + "en" => mkNounGen sg_indef (vatt + "net") sg_indef (vatt + "nen") gender ;
+      v + "in"    => mkNounGen sg_indef (v + "inet") (v + "iner") (v + "inerna") gender ;
       x + "n"     => mkNounGen sg_indef (x + "net") sg_indef (x + "nen") gender ;
-      v + "in"    => mkNounGen sg_indef (v + "net") sg_indef (v + "ner") gender ;
       a + "le"    => mkNounGen sg_indef (sg_indef + "t") sg_indef (sg_indef + "nen") gender ;
       _           => mkNounGen sg_indef (sg_indef + "et") sg_indef (sg_indef + "en") gender 
     } ;
@@ -36,7 +37,7 @@ oper
       pojk + "e"  => mkNoun2 sg_indef (pojk + "ar") gender ;
       _ + "o"     => mkNoun2 sg_indef (sg_indef + "r") gender ;
       x + "a"     => mkNoun2 sg_indef (x + "or") gender ;
-      x + "ik"  => mkNoun2 sg_indef (sg_indef) gender ;
+      x + "ik"  => mkNoun2 sg_indef (sg_indef + "er") gender ;
       _           => mkNoun2 sg_indef (sg_indef + "ar") gender 
     }
   } ;
@@ -54,7 +55,7 @@ oper
         _ + "o"       => mkNounGen sg_indef (sg_indef + "n") pl_indef (pl_indef + "na") gender ;
         cyk + "el"    => mkNounGen sg_indef (cyk + "eln") pl_indef (pl_indef + "na") gender ;
         k + "or"      => mkNounGen sg_indef (k + "on") pl_indef (pl_indef + "na") gender ;
-        x + ("ik"|"lk")      => mkNounGen sg_indef (sg_indef + "en") pl_indef (pl_indef) gender ;
+        x + ("ik"|"lk")      => mkNounGen sg_indef (sg_indef + "en") pl_indef (pl_indef + "na") gender ;
         _             => mkNounGen sg_indef (sg_indef + "en") pl_indef (pl_indef + "na" ) gender 
       }
     } ;
@@ -87,12 +88,13 @@ oper
         }
       } ;
       g = gender ;
+      a = NoArticle
     } ;
 
 
 ---verbs----
 
-Verb : Type = {s : VForm => Str} ;
+Verb : Type = {s : VForm => Str ;} ;
 
 Verb2 : Type = Verb ** {c : Str} ; --transitive verbs
 
@@ -106,7 +108,7 @@ be_Verb : Verb = mkVerb "vara" "är" "varit" "var" ;
       Pres => pres ;
       Pret => pret ;
       Sup => Sup 
-      }
+      } ;
     } ;
 
   regVerb : (inf : Str) -> Verb = \inf ->
@@ -116,6 +118,7 @@ be_Verb : Verb = mkVerb "vara" "är" "varit" "var" ;
   -- regular verbs with predictable variations
   smartVerb : Str -> Verb = \inf -> case inf of {
     x + "a" => case x of {
+      _ + "is"                     => mkVerb inf (x + "ar") (x + "te") (x + "t") ;
       _ + ("s"|"öp"|"ek")         => mkVerb inf (x + "er") (x + "te") (x + "t") ;
       _ + "sk"                    => mkVerb inf (x + "ar") (x + "ade") (x + "at") ;
       _ + "imm"                   => mkVerb inf (x + "ar") (x + "ade") (x + "at") ;
@@ -124,6 +127,7 @@ be_Verb : Verb = mkVerb "vara" "är" "varit" "var" ;
       _ + ("m"|"t"|"pp"|"d"|"ek") => mkVerb inf (inf + "r") (inf + "de") (inf + "t") ;
       _ + ("v"|"g")               => mkVerb inf (x + "er") (x + "de") (x + "t") ;
       _ + "r"                     => mkVerb inf (x) (x + "de") (x + "t") ;
+      _ + "n"                     => mkVerb inf (x + "er") (x) (x) ;
       _                           => mkVerb inf (x + "t") (x + "er") (x + "s")
     } ;            
     le + "va"                     => mkVerb inf (le + "ver") (le + "vde") (le + "vt") ;
@@ -154,6 +158,7 @@ be_Verb : Verb = mkVerb "vara" "är" "varit" "var" ;
       x + "d" => mkAdjective4 pos_utr (x + "tt") (pos_utr + "a") (pos_utr + "a") ;
       bl + "å" => mkAdjective4 pos_utr (pos_utr + "tt") (pos_utr + "a") (pos_utr + "a") ;
       x + "o" => mkAdjective4 pos_utr (pos_utr) (pos_utr) (pos_utr) ;
+      x + "k" => mkAdjective4 pos_utr (pos_utr) (pos_utr + "a") (pos_utr + "a") ;
       x =>  mkAdjective4 pos_utr (pos_utr) (x + "t") (x + "a") 
     } ;
 
@@ -164,7 +169,7 @@ be_Verb : Verb = mkVerb "vara" "är" "varit" "var" ;
       x =>  mkAdjective4 pos_utr (x + "t") (pos_utr + "a") (pos_utr + "a") 
     } ;
 
-  mkAdjectiveSmall : Str -> Str -> Str -> Str -> Adjective --didnt know how else to solve this
+  mkAdjectiveSmall : Str -> Str -> Str -> Str -> Adjective --didnt know how else to solve
     = \pos_utr,pos_neutr,pos_def,pos_plu -> {
       s = table {
         Positive => table {
