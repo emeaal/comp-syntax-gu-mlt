@@ -13,4 +13,6 @@ This applies for all transitive verbs (V2) and everything still works regardless
 
 - Adverbs are sometimes repeated in random generated sentences. For example this works when two different adverbs are randomly chosen e.g "han sover redan nu" but sometimes the same word is chosen and therefore repeated twice e.g "han sover nu nu" or "han sover redan redan". Since this was also the case when I compared my grammar using the functor I decided to keep it this way too but there is hopefully a solution to this that I couldn't find at the moment.
 
-- When testing my grammar using the functor most things that differ from the functor are just the different translations of words. For example "river" is translated into "å" in the functor but I chose to translate it to "flod", "good" was translated into "god" but I translated it to "bra". 
+- When testing my grammar using the functor most things that differ from the functor are just the different translations of words. For example "river" is translated into "å" in the functor but I chose to translate it to "flod", "good" was translated into "god" but I translated it to "bra". "find" = "hitta" / "finna"
+
+- "slå sönder" vs "bryta"  ("vänta på")
