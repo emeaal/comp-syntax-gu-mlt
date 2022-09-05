@@ -16,3 +16,5 @@ This applies for all transitive verbs (V2) and everything still works regardless
 - When testing my grammar using the functor most things that differ from the functor are just the different translations of words. For example "river" is translated into "å" in the functor but I chose to translate it to "flod", "good" was translated into "god" but I translated it to "bra". "find" = "hitta" / "finna"
 
 - "slå sönder" vs "bryta"  ("vänta på")
+
+- solution for small_A
