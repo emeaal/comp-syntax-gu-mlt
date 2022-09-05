@@ -60,8 +60,8 @@ lin
   vomitAction = mkVP (mkV "kräks") ;
   sleepAction = mkVP (mkV "sova" "sov" "sovit") ;
 
-  undressAction =  reflVP (mkV2 dress_V (mkPrep "av")) ; --reflexive
-  dressAction = reflVP (mkV2 dress_V (mkPrep "på")) ; --reflexive
+  undressAction =  reflexiveVP (mkV2 dress_V (mkPrep "av")) ; --reflexive
+  dressAction = reflexiveVP (mkV2 dress_V (mkPrep "på")) ; --reflexive
   --dressAction = mkVP (mkVP dress_V2 (mkNP thePl_Det (mkN "mig"))) (pAdv "på") ; -reflexive
 
   eatAction = mkVP (mkV "äta" "åt" "ätit") ;

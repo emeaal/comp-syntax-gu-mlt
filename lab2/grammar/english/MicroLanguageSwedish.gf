@@ -16,6 +16,7 @@ lincat
 
   V = Verb ;
   V2 = Verb2 ;
+  
 
   A = Adjective ;  
   Comp = Adjective ;  
