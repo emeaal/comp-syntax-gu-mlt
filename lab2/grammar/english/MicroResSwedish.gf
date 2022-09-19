@@ -118,7 +118,7 @@ be_Verb : Verb = mkVerb "vara" "är" "varit" "var" ;
   -- regular verbs with predictable variations
   smartVerb : Str -> Verb = \inf -> case inf of {
     x + "a" => case x of {
-      _ + "is"                     => mkVerb inf (x + "ar") (x + "te") (x + "t") ;
+      _ + "is"                     => mkVerb inf (x + "ar") (x + "te") (x + "t") ; 
       _ + ("s"|"öp"|"ek")         => mkVerb inf (x + "er") (x + "te") (x + "t") ;
       _ + "sk"                    => mkVerb inf (x + "ar") (x + "ade") (x + "at") ;
       _ + "imm"                   => mkVerb inf (x + "ar") (x + "ade") (x + "at") ;
@@ -130,7 +130,7 @@ be_Verb : Verb = mkVerb "vara" "är" "varit" "var" ;
       _ + "n"                     => mkVerb inf (x + "er") (x) (x) ;
       _                           => mkVerb inf (x + "t") (x + "er") (x + "s")
     } ;            
-    le + "va"                     => mkVerb inf (le + "ver") (le + "vde") (le + "vt") ;
+    le + "va"                     => mkVerb inf (le + "ver") (le + "vde") (le + "vt") ; --almost regular but does not fit in above
      _ => regVerb inf
      } ;
 
@@ -153,11 +153,10 @@ be_Verb : Verb = mkVerb "vara" "är" "varit" "var" ;
       x + "mal" => mkAdjective4 pos_utr (x + "malt") (x + "la") (x + "la") ;
       x + ("rt"|"r"|"n"|"l"|"g") => mkAdjective4 pos_utr (pos_utr) (pos_utr + "a") (pos_utr + "a") ;
       x + "t" => mkAdjective4 pos_utr (pos_utr) (pos_utr) (pos_utr + "a") ;
-      x + "a" => mkAdjective4 pos_utr (pos_utr) (pos_utr) (pos_utr) ;
+      x + ("a"|"o") => mkAdjective4 pos_utr (pos_utr) (pos_utr) (pos_utr) ; --originally for "redo"
       x + "y" => mkAdjective4 pos_utr (pos_utr) (pos_utr + "tt") (pos_utr + "a") ;
       x + "d" => mkAdjective4 pos_utr (x + "tt") (pos_utr + "a") (pos_utr + "a") ;
       bl + "å" => mkAdjective4 pos_utr (pos_utr + "tt") (pos_utr + "a") (pos_utr + "a") ;
-      x + "o" => mkAdjective4 pos_utr (pos_utr) (pos_utr) (pos_utr) ;
       x + "k" => mkAdjective4 pos_utr (pos_utr) (pos_utr + "a") (pos_utr + "a") ;
       x =>  mkAdjective4 pos_utr (pos_utr) (x + "t") (x + "a") 
     } ;
