@@ -23,7 +23,7 @@ lincat
 
   Adv = {s : Str} ;  
   Prep = {s : Str} ;
-  Pron = {s : Case => Str ; a : Agreement ; g : Gender ; n : Number} ; -- gender?
+  Pron = {s : Case => Str ; a : Agreement ; g : Gender ; n : Number} ;
   Det = {s : Gender => Art => Str ; n : Number ; sp : Species ; g : Gender} ;
 
 
