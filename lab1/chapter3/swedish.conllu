@@ -184,7 +184,7 @@
 10	minuter	_	NOUN	_	_	6	obj	_	_
 11	att	_	PART	_	_	12	mark	_	_
 12	korsa	_	VERB	_	_	6	csubj	_	_
-13	Potomacfloden	_	NOUN	_	_	12	obj	_	_
+13	Potomacfloden	_	PROPN	_	_	12	obj	_	_
 14	med	_	ADP	_	_	15	case	_	_
 15	gondolan	_	NOUN	_	_	12	obl	_	_
 16	.	_	PUNCT	_	_	2	punct	_	_
