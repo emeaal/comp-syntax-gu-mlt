@@ -76,7 +76,6 @@
 
 # sent_id = 7
 # text = "Her voice literally went around the world," Leive said.
-# root = went? or said? how to work with quotes?
 1	"	_	PUNCT	_	_	5	punct	_	_
 2	Her	_	PRON	_	_	3	nmod:poss	_	_
 3	voice	_	NOUN	_	_	5	nsubj	_	_
@@ -162,7 +161,6 @@
 
 # sent_id = 12
 # text = The feasibility study estimates that it would take passengers about four minutes to cross the Potomac River on the gondola .
-# any reason why line 2 isnt coloured? tabs? order?
 1	The	_	DET	_	_	3	det	_	_
 2	feasibility	_	NOUN	_	_	3	compound	_   _ 
 3	study	_	NOUN	_	_	4	nsubj	_	_ 
@@ -239,7 +237,6 @@
 
 # sent_id = 17
 # text = Adam would have been carried over into the life eternal
-# over, ADV or ADP?
 1	Adam	_	PROPN	_	_	5	nsubj:pass	_	_
 2	would	_	AUX	_	_	5	aux	_	_
 3	have	_	AUX	_	_	5	aux	_	_
@@ -266,7 +263,6 @@
 
 # sent_id = 19
 # text = she was incensed that this chit of a girl should dare to make a fool of her in front of the class
-# 18-20 fixed MWE? 
 1	she	_	PRON	_	_	3	nsubj	_	_
 2	was	_	VERB	_	_	3	cop	_	_
 3	incensed	_	ADJ	_	_	0	root	_	_
@@ -292,7 +288,6 @@
 
 # sent_id = 20
 # text = the landslide he had in the electoral college obscured the narrowness of a victory based on just 43% of the popular vote
-# no colour on line 7?
 1	the	_	DET	_	_	2	det	_	_
 2	landslide	_	NOUN	_	_	9	nsubj	_	_
 3	he	_	PRON	_	_	4	nsubj	_	_
@@ -319,7 +314,6 @@
 
 # sent_id = 21
 # text = United States troops now carry atropine and autoinjectors in their first-aid kits to use in case of organophosphate nerve agent poisoning
-# no colour on line 20? tabs? order?
 1	United	_	PROPN	_	_	2	compound	_	_
 2	States	_	PROPN	_	_	3	compound	_	_
 3	troops	_	NOUN	_	_	5	nsubj	_	_
@@ -346,7 +340,6 @@
 
 # sent_id = 22
 # text = He may accomplish by craft in the long run what he cannot do by force and violence in the short one
-# I was a bit unsure of the "cannot" but followed an example from the en PUD where it was divided into "can" and "not"
 1	He	_	PRON	_	_	3	nsubj	_	_
 2	may	_	AUX	_	_	3	aux	_	_
 3	accomplish	_	VERB	_	_	0	root	_	_
