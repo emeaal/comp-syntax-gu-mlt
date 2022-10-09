@@ -7,7 +7,7 @@ lincat
   Utt = {s : Str} ;
   S = {s : Str} ;
   NP = {s : Case => Str ; n : Number ; g : Gender ; a : Agreement} ;
-  VP = {verb : Verb ; part : Str ; compl : Number => Gender => Str } ; -- ; compl : Complement} ;
+  VP = {verb : Verb ; part : Str ; compl : Number => Gender => Str } ; 
   AP = Adjective ;
   
    
@@ -35,7 +35,7 @@ lin
 --Sentence 
 
   PredVPS np vp = {
-    s = np.s ! Nom ++ vp.verb.s ! Pres ++ vp.part ++ vp.compl ! np.n ! np.g --++ vp.compl.s ! np.a
+    s = np.s ! Nom ++ vp.verb.s ! Pres ++ vp.part ++ vp.compl ! np.n ! np.g 
   } ;
 
 
@@ -96,7 +96,7 @@ UseN n = n ;
       c => det.s ! cn.g ! cn.a ++ cn.s ! det.n ! det.sp ! c  
     };
     a = Agr det.n ;
-    g = cn.g ; --eller det.g ?? cn.g?
+    g = cn.g ;
     n = det.n 
     } ;
 
@@ -233,31 +233,31 @@ lin book_N = mkN "bok" "böcker" Utr ;
 lin boy_N = mkN "pojke" Utr ;
 lin bread_N = mkN "bröd" Neut ;
 lin car_N = mkN "bil" Utr ;
-lin cat_N = mkN "katt" Utr ; -- check
+lin cat_N = mkN "katt" Utr ; 
 lin child_N = mkN "barn" Neut ;
 lin city_N = mkN "stad" "städer" Utr ;
 lin cloud_N = mkN "moln" Neut ;
-lin computer_N = mkN "dator" "datorer" Utr ; --find a rule?
+lin computer_N = mkN "dator" "datorer" Utr ; 
 lin cow_N = mkN "ko" Utr; 
 lin dog_N = mkN "hund" Utr ;
 lin fire_N = mkN "eld" Utr ;
 lin fish_N = mkN "fisk" Utr ;
 lin flower_N = mkN "blomma" Utr ;
-lin friend_N = mkN "vän" "vännen" "vänner" "vännerna" Utr ; --check
+lin friend_N = mkN "vän" "vännen" "vänner" "vännerna" Utr ; 
 lin girl_N = mkN "flicka" Utr ;
 lin grammar_N = mkN "grammatik" Utr ; ---uncountable, check for mass noun
 lin horse_N = mkN "häst" Utr ;
-lin house_N = mkN "hus" Neut ; --uncountable, check S ending
+lin house_N = mkN "hus" Neut ;
 lin language_N = mkN "språk" Neut ;
 lin man_N = mkN "man" "mannen" "män" "männen" Utr ;
-lin milk_N = mkN "mjölk" Utr; -- uncountable
-lin music_N = mkN "musik" Utr ; -- uncountable
+lin milk_N = mkN "mjölk" Utr; 
+lin music_N = mkN "musik" Utr ; 
 lin river_N = mkN "flod" Utr ;
 lin sea_N = mkN "hav" Neut ;
-lin ship_N = mkN "skepp" Neut ; -- uncountable
+lin ship_N = mkN "skepp" Neut ; 
 lin star_N = mkN "stjärna" Utr ;
-lin train_N = mkN "tåg" Neut ; -- uncountable
-lin tree_N = mkN "träd" Neut ; --uncountable
+lin train_N = mkN "tåg" Neut ; 
+lin tree_N = mkN "träd" Neut ; 
 lin water_N = mkN "vatten" Neut ;
 lin wine_N = mkN "vin" Neut ;
 lin woman_N = mkN "kvinna" Utr ;
@@ -307,7 +307,7 @@ lin swim_V = mkV "simma" "simmade" "simmat" ; --check
 lin teach_V2 = mkV2 (mkV "undervisa" "undervisade" "undervisat" ) ;--"lära" "lärde" "lärt") ; --v2
 lin travel_V = mkV "resa" ;
 lin understand_V2 = mkV2 (mkV "förstå" "förstod" "förstått") ; --v2
-lin wait_V2 = mkV2 (mkV "vänta") "på"  ; -- vänta på <-- add "på" and fix particle --v2
+lin wait_V2 = mkV2 (mkV "vänta") "på"  ; 
 lin walk_V = mkV "gå" "gick" "gått";
 
 ---------------- Paradigms part ---------------------

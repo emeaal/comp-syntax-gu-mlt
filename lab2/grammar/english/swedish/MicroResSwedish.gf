@@ -66,7 +66,7 @@ oper
         Sing => table {
           Indef => table {
             Geni => case sg_indef of {
-              _ + "s" => sg_indef ; --add similar for all forms, ending with S
+              _ + "s" => sg_indef ;
               _ => sg_indef + "s" 
             } ;
             _ => sg_indef
