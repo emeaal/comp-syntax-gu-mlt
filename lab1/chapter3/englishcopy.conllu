@@ -333,7 +333,7 @@
 17	in	_	ADP	_	_	23	case	_	_
 18	case	_	NOUN	_	_	17	dep	_	_
 19	of	_	ADP	_	_	17	dep	_	_
-20	organophosphate	_	NOUN	_	_	21	compound	_   _
+20  organophosphate	_	NOUN	_	_	21	compound	_   _
 21	nerve	_	NOUN	_	_	22	compound	_	_ 
 22	agent	_	NOUN	_	_	23	compound	_	_
 23	poisoning	_	NOUN	_	_	16	obl	_	_
